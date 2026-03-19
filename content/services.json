@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "general-dentistry",
+    "title": "General Dentistry",
+    "description": "Family-friendly care for patients of all ages, from checkups to cleanings.",
+    "icon": "shield"
+  },
+  {
+    "slug": "orthodontics",
+    "title": "Orthodontics",
+    "description": "Straighter smiles for children and adults with modern orthodontic solutions.",
+    "icon": "smile"
+  },
+  {
+    "slug": "dental-implants",
+    "title": "Dental Implants",
+    "description": "Restore your smile and confidence with permanent, durable tooth replacements.",
+    "icon": "dentures"
+  },
+  {
+    "slug": "cosmetic-dentistry",
+    "title": "Cosmetic Dentistry",
+    "description": "Brighten and enhance your smile with professional teeth whitening and veneers.",
+    "icon": "sparkles"
+  },
+  {
+    "slug": "emergency-dentistry",
+    "title": "Emergency Dentistry",
+    "description": "Same-day dental care for pain relief and urgent oral health needs.",
+    "icon": "ambulance"
+  }
+]

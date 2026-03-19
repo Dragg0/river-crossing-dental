@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "cleaning-special",
+    "title": "$89 Cleaning, Exam & X-Ray",
+    "description": "New patients can enjoy a professional cleaning, comprehensive exam, and x-rays.",
+    "fine_print": "New patients only."
+  },
+  {
+    "slug": "exam-special",
+    "title": "$49 Emergency Exam & X-Ray",
+    "description": "Get a comprehensive oral evaluation for emergencies and urgent pain.",
+    "fine_print": "New patients only."
+  },
+  {
+    "slug": "ortho-consult",
+    "title": "Complimentary Ortho Consultation",
+    "description": "Schedule a free consultation to determine the best straightening option for you.",
+    "fine_print": "New patients only."
+  }
+]
