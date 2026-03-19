@@ -14,34 +14,45 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden bg-slate-900 py-24 sm:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center text-white">
+      <section className="relative w-full overflow-hidden bg-slate-900 min-h-[85vh] flex items-center">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80 z-10" />
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center text-white py-24 sm:py-32">
           <div className="mx-auto max-w-4xl space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl text-blue-100">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl text-white drop-shadow-lg">
               Welcome to River Crossing <br />
               Family Dental & Orthodontics
             </h1>
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto drop-shadow">
               High-quality, modern dentistry for the entire family in Riverton, UT. Experience comfort, advanced technology, and genuine patient care.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <a 
                 href="https://modento.io/river-crossing-dental" 
-                className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-10 text-base font-semibold text-white shadow-xl shadow-blue-900/20 transition-all hover:bg-blue-700 active:scale-95"
+                className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-10 text-base font-semibold text-white shadow-xl shadow-blue-900/40 transition-all hover:bg-blue-700 active:scale-95"
               >
                 Book An Appointment
               </a>
               <a 
                 href="tel:8015099937" 
-                className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-full border-2 border-slate-700 bg-slate-800/50 px-10 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-slate-700"
+                className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-full border-2 border-white/30 bg-white/10 px-10 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20"
               >
                 Call Us: (801) 509-9937
               </a>
             </div>
           </div>
         </div>
-        {/* Simple decorative element */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-blue-500/10 blur-3xl rounded-full -z-0 opacity-50 pointer-events-none" />
       </section>
 
       {/* Services Grid */}
