@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f1f33;
 }
 
 @theme inline {
@@ -10,6 +10,15 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Brand palette — sampled from the R-mark logo + reference screenshots */
+  --color-brand-navy: #2c4a6b;
+  --color-brand-navy-dark: #1c3554;
+  --color-brand-steel: #7ba0bd;
+  --color-brand-steel-light: #b4c8d8;
+  --color-brand-cream: #f7f3ec;
+  --color-brand-coral: #e07856;
+  --color-brand-coral-dark: #c8633f;
 }
 
 @layer base {
@@ -18,6 +27,9 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4 {
+    @apply text-brand-navy;
   }
 }
 

@@ -1,0 +1,111 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { nav, siteConfig } from "@/lib/site-config";
+
+export function MobileMenu() {
+  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full text-brand-navy hover:bg-slate-100"
+        aria-label="Open menu"
+      >
+        <Menu className="h-6 w-6" />
+      </button>
+
+      {open && (
+        <div className="fixed inset-0 z-[100] bg-white md:hidden flex flex-col">
+          <div className="flex h-16 items-center justify-between px-4 border-b">
+            <span className="font-bold text-brand-navy">Menu</span>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-slate-100"
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+
+          <nav className="flex-1 overflow-y-auto px-4 py-6 space-y-1">
+            {nav.map((item) => {
+              const isExpanded = expanded === item.label;
+              return (
+                <div key={item.label}>
+                  {item.children ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setExpanded(isExpanded ? null : item.label)}
+                        className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-base font-semibold text-brand-navy hover:bg-slate-50"
+                      >
+                        {item.label}
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                      {isExpanded && (
+                        <div className="ml-4 mt-1 space-y-1 border-l-2 border-brand-steel-light pl-3">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              onClick={() => setOpen(false)}
+                              className="block rounded-md px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-navy"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="block rounded-lg px-4 py-3 text-base font-semibold text-brand-navy hover:bg-slate-50"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
+          </nav>
+
+          <div className="border-t p-4 space-y-3">
+            <a
+              href={`tel:${siteConfig.phone.tel}`}
+              className="block text-center text-sm font-medium text-brand-navy"
+            >
+              Call {siteConfig.phone.display}
+            </a>
+            <a
+              href={siteConfig.booking}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="block w-full rounded-full bg-brand-coral px-6 py-3 text-center text-sm font-semibold text-white shadow-md hover:bg-brand-coral-dark"
+            >
+              Book Appointment
+            </a>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
