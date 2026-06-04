@@ -24,6 +24,15 @@
 .DS_Store
 *.pem
 
+# archived old-site copy (kept locally for reference, not committed)
+/_archive/
+
+# defensive: never commit zips/dmgs/sql dumps from the root — credentials and binaries
+/*.zip
+/*.dmg
+/*.sql
+/*.wpress
+
 # debug
 npm-debug.log*
 yarn-debug.log*
