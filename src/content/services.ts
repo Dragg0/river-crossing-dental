@@ -58,7 +58,7 @@ export const services: Service[] = [
       },
       {
         heading: "Root Canal Therapy",
-        body: "If you have a severely decayed or damaged tooth, a root canal may relieve pain and restore your smile. The area is completely numbed for comfort. We remove the decay, create a tiny access hole to reach the pulp, remove the inflamed pulp, clean the interior, and fill with biocompatible gutta-percha — then seal and cover with a crown. With our CEREC same-day crown technology, we can treat and restore your smile in a single visit.",
+        body: "If you have a severely decayed or damaged tooth, a root canal may relieve pain and restore your smile. The area is completely numbed for comfort. We remove the decay, create a tiny access hole to reach the pulp, remove the inflamed pulp, clean the interior, and fill with biocompatible gutta-percha — then seal and cover with a crown. With our SprintRay Midas chairside 3D printer, we can print and place a permanent same-day crown — treating and restoring your smile in a single visit.",
       },
       {
         heading: "Sleep Apnea Treatment",
@@ -114,7 +114,7 @@ export const services: Service[] = [
       },
       {
         heading: "Cosmetic Crowns",
-        body: "Crowns can save damaged teeth, preserve severe decay, and conceal cosmetic imperfections. The natural tooth is numbed and shaped so the crown fits over it. Our CEREC (chairside economical restoration of esthetic ceramics) technology lets us design and place a permanent crown in one visit — no recurring appointments, temporary crowns, or long wait times.",
+        body: "Crowns can save damaged teeth, preserve severe decay, and conceal cosmetic imperfections. The natural tooth is numbed and shaped so the crown fits over it. Our chairside 3D-printing technology (SprintRay Midas) lets us design, print, and place a permanent crown in a single visit — no temporary crowns, no second appointments, no weeks of waiting on a lab.",
       },
       {
         heading: "ICON White Spot Treatment",
@@ -208,7 +208,7 @@ export const services: Service[] = [
     slug: "orthodontics",
     title: "Orthodontics",
     description:
-      "Straighter, healthier smiles for children and adults — Invisalign, traditional braces, on-site clear aligners, and HealthyStart for kids.",
+      "Straighter, healthier smiles for children and adults — Invisalign (including Teen and First), traditional braces, and HealthyStart for kids.",
     icon: "smile",
     heroImage: "/images/service/orthodontics.webp",
     heroImageAlt: "A teen with a confident smile, suitable for Invisalign treatment",
@@ -216,12 +216,8 @@ export const services: Service[] = [
       "Orthodontics doesn't just enhance the appearance of teeth — it can also enhance their health. Straighter teeth offer adequate spacing for flossing and brushing, so they're easier to keep clean, making you less likely to develop decay and gum disease. If you're looking for a Riverton orthodontist, our team wants to support you and your family. Call today to schedule your free orthodontic consultation.",
     sections: [
       {
-        heading: "On-site Clear Aligners",
-        body: "Our practice has its own 3D printing system, allowing us to print clear aligners in-office. This means no waiting for shipping, every step overseen by your dentist, and lower cost without external manufacturing. We start with a digital impression using an intraoral camera, build a complete replica of your mouth, and design a series of aligners that gradually shift your teeth into alignment.",
-      },
-      {
         heading: "Invisalign®",
-        body: "Translucent, smooth, durable aligners that handle underbite, overbite, gaps, and crowding. Treatment can be as short as six months; aligners are worn up to 22 hours a day, removed only for eating and cleaning. Each aligner gradually shifts your teeth toward alignment.",
+        body: "Translucent, smooth, durable aligners that handle underbite, overbite, gaps, and crowding. Treatment can be as short as six months; aligners are worn up to 22 hours a day, removed only for eating and cleaning. Each aligner gradually shifts your teeth toward alignment. Dr. Peterson is a certified Invisalign provider, including for Invisalign Teen and Invisalign First.",
       },
       {
         heading: "Traditional Braces",

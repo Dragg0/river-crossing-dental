@@ -114,12 +114,7 @@ export const offers: Offer[] = [
       {
         label: "Invisalign®",
         description:
-          "Translucent, removable clear aligners — virtually invisible and convenient.",
-      },
-      {
-        label: "In-house clear aligners",
-        description:
-          "Our own 3D-printed aligners — no shipping delays, every step overseen by your dentist.",
+          "Translucent, removable clear aligners — virtually invisible and convenient. Including Invisalign Teen and Invisalign First.",
       },
       {
         label: "HealthyStart®",

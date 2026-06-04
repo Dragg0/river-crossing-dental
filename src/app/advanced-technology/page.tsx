@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Radio, Layers, ScanFace, Crown, Sparkles, type LucideIcon } from "lucide-react";
+import { Radio, ScanFace, Crown, Sparkles, type LucideIcon } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 
 export const metadata: Metadata = {
   title: "Advanced Technology",
   description:
-    "Same-day CEREC crowns, in-office 3D-printed clear aligners, guided implant surgery, and low-radiation digital X-rays at River Crossing Family Dental.",
+    "Same-day 3D-printed crowns (SprintRay Midas), guided implant surgery, and low-radiation digital X-rays at River Crossing Family Dental.",
 };
 
 type Tech = {
@@ -28,24 +28,25 @@ const technologies: Tech[] = [
     ],
   },
   {
-    heading: "In-House Clear Aligner Printing",
-    icon: Layers,
-    body: "Our practice produces clear aligners in-office (similar to Invisalign) rather than shipping from a lab — so you start treatment faster and at lower cost. Using a digital scan, we produce custom-made aligners built to precisely fit your smile, with a treatment plan established by our doctors.",
-  },
-  {
     heading: "Guided Implant Surgery",
     icon: ScanFace,
     body: "We use a 3D X-ray scanner to produce a life-like model of your oral anatomy, letting us study jawbone density and condition to determine ideal implant placement. Planning the placement before surgery lets us perform with high accuracy and maximizes the long-term success of your implants.",
   },
   {
-    heading: "CEREC Same-Day Crowns",
+    heading: "Same-Day 3D-Printed Crowns",
     icon: Crown,
-    body: "CEREC (chairside economical restoration of esthetic ceramics) lets us design, mill, and place a permanent crown in a single visit — no temporary crowns, no waiting weeks for a lab, no second appointment.",
+    body: "When you need a crown, we can design, print, and place it in a single visit — no temporary crown, no waiting weeks for a lab, no second appointment to disrupt your schedule. We use the SprintRay Midas, the latest generation of chairside crown printing technology. After a quick digital scan of your tooth, the crown is custom-designed on screen, printed and cured in our office using a strong, biocompatible ceramic resin, then bonded into place — all before you leave.",
+    bullets: [
+      "One visit instead of two or three",
+      "No uncomfortable temporary crown to babysit",
+      "A permanent, biocompatible restoration that looks and feels like your own tooth",
+      "Most cases finish in around 90 minutes of chair time",
+    ],
   },
   {
     heading: "Certified Invisalign Provider",
     icon: Sparkles,
-    body: "Dr. Peterson is a certified Invisalign provider with advanced orthodontic training. We treat overbites, underbites, crowding, gaps, and edge-to-edge bites with Invisalign, our in-house clear aligner system, traditional braces, or HealthyStart — whichever option fits your goals best.",
+    body: "Dr. Peterson is a certified Invisalign provider with advanced orthodontic training. We treat overbites, underbites, crowding, gaps, and edge-to-edge bites with Invisalign, traditional braces, or HealthyStart — whichever option fits your goals best.",
   },
 ];
 
