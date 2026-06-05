@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "Modern, family-friendly dentistry in Riverton, UT",
   description:
     "Quality modern dentistry for the entire family in Riverton, UT. General dentistry, cosmetic, orthodontics, dental implants, and emergency dental care.",
-  url: "https://river-crossing-dental.vercel.app",
+  url: "https://www.rivercrossingdental.com",
 
   address: {
     street: "4121 13400 S Unit A",
