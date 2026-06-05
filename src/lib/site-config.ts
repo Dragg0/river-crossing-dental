@@ -72,6 +72,7 @@ export const nav: NavItem[] = [
     children: [
       { label: "General Dentistry", href: "/services/general-dentistry" },
       { label: "Cosmetic Dentistry", href: "/services/cosmetic-dentistry" },
+      { label: "Icon White Spot Treatment", href: "/services/cosmetic-dentistry/icon" },
       { label: "Dental Implants", href: "/services/dental-implants" },
       { label: "Orthodontics", href: "/services/orthodontics" },
       { label: "Invisalign Teen", href: "/services/orthodontics/invisalign-teen" },
