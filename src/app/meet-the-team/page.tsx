@@ -48,7 +48,7 @@ export default function MeetTheTeamPage() {
       <section className="bg-white py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
-            <div className="lg:col-span-2 sticky top-24">
+            <div className="lg:col-span-2 lg:sticky lg:top-24">
               <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/team/dr-peterson.webp"
