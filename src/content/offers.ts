@@ -27,8 +27,8 @@ export const offers: Offer[] = [
     description:
       "A complete new-patient visit at a price that makes it simple to get started on your oral health journey.",
     finePrint: "New patients only.",
-    image: "/images/specials/family-dinner.webp",
-    imageAlt: "Family laughing together at dinner",
+    image: "/images/specials/cleaning-family.webp",
+    imageAlt: "Three generations of a family laughing outdoors",
     intro:
       "At River Crossing Family Dental in Riverton, UT, we believe everyone deserves a beautiful, confident smile — and routine professional cleanings and exams are essential to oral wellness, even if you brush and floss regularly. Our team removes plaque, tartar, and food debris from hard-to-reach areas that can otherwise lead to gum disease and tooth decay.",
     includes: [
@@ -62,8 +62,8 @@ export const offers: Offer[] = [
     description:
       "Dental emergencies are stressful enough without worrying about the cost. Get the urgent care you need right away.",
     finePrint: "New patients only.",
-    image: "/images/specials/family-laundry.webp",
-    imageAlt: "Parent and children spending time together at home",
+    image: "/images/specials/exam-xray.webp",
+    imageAlt: "Dentist reviewing a dental X-ray on a monitor",
     intro:
       "Are you experiencing a dental emergency? Our experienced team provides the care you need, when you need it. We reserve time in our daily schedule so we can see urgent patients the same day whenever possible.",
     includes: [
@@ -101,8 +101,8 @@ export const offers: Offer[] = [
     description:
       "Curious about Invisalign or other orthodontic options? Come in for a no-cost consultation and find out what treatment could do for your smile.",
     finePrint: "New patients only.",
-    image: "/images/service/orthodontics.webp",
-    imageAlt: "Teen smiling with Invisalign-compatible smile",
+    image: "/images/specials/ortho-consult-aligners.webp",
+    imageAlt: "Two clear orthodontic aligners held to form a heart shape",
     intro:
       "Searching for top-quality orthodontic care for your family in Riverton, UT? River Crossing Family Dental offers a variety of orthodontic options so patients can decide what's best for them. Our free consultation lets us learn about the patient's needs and determine the perfect treatment.",
     includes: [

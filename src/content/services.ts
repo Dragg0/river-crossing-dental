@@ -123,8 +123,8 @@ export const services: Service[] = [
     icon: "sparkles",
     iconImage: "/images/service/icons/dental-care-2.png",
     iconImageAlt: "Shiny, freshly cleaned tooth",
-    heroImage: "/images/service/cosmetic.jpeg",
-    heroImageAlt: "A confident person smiling — cosmetic dentistry results",
+    heroImage: "/images/service/cosmetic.webp",
+    heroImageAlt: "Dentist applying a cosmetic treatment to a smiling patient",
     intro:
       "Your smile should be the first thing people notice when you walk into a room — it radiates confidence and warmth, and it's just a beautiful feature. If there's something standing in the way of your smile goals, we want to hear about it. Our practice has multiple cosmetic dentistry treatment options to design the perfect smile, just for you.",
     sections: [
@@ -255,7 +255,7 @@ export const services: Service[] = [
     iconImage: "/images/service/icons/dental-care-3.png",
     iconImageAlt: "Healthy tooth marker",
     heroImage: "/images/service/orthodontics.webp",
-    heroImageAlt: "A teen with a confident smile, suitable for Invisalign treatment",
+    heroImageAlt: "Adult patient holding a clear aligner near her mouth and smiling",
     intro:
       "Orthodontics doesn't just enhance the appearance of teeth — it can also enhance their health. Straighter teeth offer adequate spacing for flossing and brushing, so they're easier to keep clean, making you less likely to develop decay and gum disease. If you're looking for a Riverton orthodontist, our team wants to support you and your family. Call today to schedule your free orthodontic consultation.",
     sections: [
