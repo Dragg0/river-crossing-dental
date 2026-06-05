@@ -7,6 +7,23 @@ export type ServiceSection = {
   ordered?: boolean;
 };
 
+/**
+ * Optional "urgent care" hero variant. Use for service pages where the
+ * default editorial hero would feel wrong — primarily Emergency Dentistry,
+ * where a stressed patient needs triage-first messaging (patient-intent
+ * headline, diagnostic cards, call-first CTA).
+ *
+ * Presence of this field switches the page to the urgent layout —
+ * no separate enum needed, and you can't set the flag without the data.
+ */
+export type UrgentHero = {
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  cards: { iconKey: string; label: string; description: string }[];
+  steps: { iconKey: string; label: string; description: string }[];
+};
+
 export type Service = {
   slug: string;
   title: string;
@@ -29,6 +46,12 @@ export type Service = {
    * dentistry, where a patient in pain shouldn't be reading like a brochure.
    */
   unnumbered?: boolean;
+  /**
+   * If set, the page renders the urgent-care hero variant (triage cards,
+   * call-first CTA, expectation-setting steps strip) instead of the default
+   * editorial hero. See UrgentHero above.
+   */
+  urgentHero?: UrgentHero;
   closingHeading?: string;
   closingBody?: string;
 };
@@ -262,6 +285,46 @@ export const services: Service[] = [
     iconImage: "/images/service/icons/toothache.png",
     iconImageAlt: "Tooth with pain indicator",
     unnumbered: true,
+    urgentHero: {
+      eyebrow: "Same-day emergency dental care",
+      headline: "Tooth pain, swelling, or a broken tooth?",
+      intro:
+        "Call River Crossing Family Dental in Riverton. We'll help you get comfortable, understand what's happening, and find the fastest path to treatment.",
+      cards: [
+        {
+          iconKey: "alert-circle",
+          label: "Severe tooth pain",
+          description: "Pain, pressure, or sensitivity that won't settle down.",
+        },
+        {
+          iconKey: "heart-pulse",
+          label: "Swelling or infection",
+          description: "Facial swelling, gum swelling, abscess symptoms, or fever.",
+        },
+        {
+          iconKey: "plus-circle",
+          label: "Broken or lost tooth",
+          description: "Cracked teeth, knocked-out teeth, lost crowns, or lost fillings.",
+        },
+      ],
+      steps: [
+        {
+          iconKey: "phone-call",
+          label: "Call first",
+          description: "Our front office will help you decide how quickly you should be seen.",
+        },
+        {
+          iconKey: "calendar-clock",
+          label: "Same-day openings",
+          description: "We keep room in the daily schedule for urgent visits.",
+        },
+        {
+          iconKey: "shield",
+          label: "Comfort-focused care",
+          description: "We help you get comfortable, explain options clearly, and treat what we can.",
+        },
+      ],
+    },
     intro:
       "Dental emergencies are never planned, but when they happen, you need fast, reliable care from a team you can trust. At River Crossing Family Dental in Riverton, UT, we offer compassionate and efficient emergency dentistry services to help relieve your pain, protect your oral health, and restore your smile as quickly as possible. Whether you're experiencing a sudden toothache, have suffered a dental injury, or need same-day treatment, our experienced team is here to help.",
     sections: [

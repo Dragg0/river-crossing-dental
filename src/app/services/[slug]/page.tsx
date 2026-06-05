@@ -1,7 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Shield, Smile, PlusCircle, Sparkles, Ambulance, type LucideIcon } from "lucide-react";
+import {
+  AlertCircle,
+  ArrowLeft,
+  ArrowRight,
+  CalendarClock,
+  HeartPulse,
+  PhoneCall,
+  Shield,
+  Smile,
+  PlusCircle,
+  Sparkles,
+  Ambulance,
+  type LucideIcon,
+} from "lucide-react";
 import type { Metadata } from "next";
 import { services } from "@/content/services";
 import { siteConfig } from "@/lib/site-config";
@@ -13,6 +26,20 @@ const ICONS: Record<string, LucideIcon> = {
   dentures: PlusCircle,
   sparkles: Sparkles,
   ambulance: Ambulance,
+};
+
+/**
+ * Icon registry for the urgent-care hero variant. Data files reference these
+ * by string key (e.g. "alert-circle") so the content layer stays pure data,
+ * no React imports.
+ */
+const URGENT_ICONS: Record<string, LucideIcon> = {
+  "alert-circle": AlertCircle,
+  "heart-pulse": HeartPulse,
+  "plus-circle": PlusCircle,
+  "phone-call": PhoneCall,
+  "calendar-clock": CalendarClock,
+  shield: Shield,
 };
 
 export function generateStaticParams() {
@@ -43,6 +70,7 @@ export default async function ServicePage({
   if (!service) notFound();
 
   const Icon = ICONS[service.icon] ?? PlusCircle;
+  const urgent = service.urgentHero;
 
   return (
     <>
@@ -61,8 +89,22 @@ export default async function ServicePage({
       {/* Hero */}
       <section className="bg-brand-cream py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-center">
-            <div className={service.heroImage ? "lg:col-span-3 space-y-5" : "lg:col-span-5 max-w-3xl space-y-5"}>
+          <div
+            className={
+              urgent
+                ? "grid lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] gap-10 lg:gap-16 items-center"
+                : "grid lg:grid-cols-5 gap-10 lg:gap-14 items-center"
+            }
+          >
+            <div
+              className={
+                urgent
+                  ? "space-y-5"
+                  : service.heroImage
+                    ? "lg:col-span-3 space-y-5"
+                    : "lg:col-span-5 max-w-3xl space-y-5"
+              }
+            >
               <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-brand-navy shadow-sm overflow-hidden">
                 {service.iconImage ? (
                   <Image
@@ -76,28 +118,65 @@ export default async function ServicePage({
                   <Icon className="h-7 w-7" />
                 )}
               </div>
+              {urgent && (
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-coral">
+                  {urgent.eyebrow}
+                </p>
+              )}
               <h1 className="text-4xl sm:text-5xl font-bold text-brand-navy leading-tight">
-                {service.title}
+                {urgent ? urgent.headline : service.title}
               </h1>
-              <p className="text-lg text-slate-700 leading-relaxed">{service.intro}</p>
+              <p className="text-lg text-slate-700 leading-relaxed">
+                {urgent ? urgent.intro : service.intro}
+              </p>
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <a
+                  href={`tel:${siteConfig.phone.tel}`}
+                  className={
+                    urgent
+                      ? "inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
+                      : "inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
+                  }
+                >
+                  Call {siteConfig.phone.display}
+                </a>
                 <a
                   href={siteConfig.booking}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
+                  className={
+                    urgent
+                      ? "inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
+                      : "inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
+                  }
                 >
                   Book Appointment
                 </a>
-                <a
-                  href={`tel:${siteConfig.phone.tel}`}
-                  className="inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
-                >
-                  Call {siteConfig.phone.display}
-                </a>
               </div>
             </div>
-            {service.heroImage && (
+            {urgent ? (
+              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                {urgent.cards.map((card) => {
+                  const CardIcon = URGENT_ICONS[card.iconKey] ?? PlusCircle;
+                  return (
+                    <div
+                      key={card.label}
+                      className="flex gap-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
+                    >
+                      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-brand-cream text-brand-coral">
+                        <CardIcon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="text-base font-bold text-brand-navy">{card.label}</p>
+                        <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                          {card.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : service.heroImage && (
               <div className="lg:col-span-2 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl">
                 <Image
                   src={service.heroImage}
@@ -112,6 +191,29 @@ export default async function ServicePage({
           </div>
         </div>
       </section>
+
+      {urgent && (
+        <section className="border-y border-slate-200 bg-white py-8">
+          <div className="container mx-auto grid gap-5 px-4 sm:px-6 md:grid-cols-3 lg:px-8">
+            {urgent.steps.map((step) => {
+              const StepIcon = URGENT_ICONS[step.iconKey] ?? Shield;
+              return (
+                <div key={step.label} className="flex gap-4">
+                  <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-brand-navy text-white">
+                    <StepIcon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-base font-bold text-brand-navy">{step.label}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* Treatment sections */}
       <section className="bg-white py-16 sm:py-20">
