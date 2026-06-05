@@ -140,6 +140,40 @@ export default function MeetTheTeamPage() {
         </div>
       </section>
 
+      {/* Family-practice closing band */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/meet-the-team/family-warmth.webp"
+                alt="A family of three smiling together outdoors"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="space-y-5">
+              <p className="text-sm font-bold tracking-widest uppercase text-brand-coral">
+                Caring for Riverton families
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-brand-navy">
+                You&rsquo;re not just a chart number to us.
+              </h2>
+              <p className="text-lg text-slate-700 leading-relaxed">
+                Dr. Peterson opened River Crossing Family Dental in 2010 to do dentistry the way
+                he&rsquo;d want it done for his own family — careful, calm, and personal. We
+                treat patients of every age and stage, and we&rsquo;d love to meet yours.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed">
+                Whether it&rsquo;s a first cleaning for a toddler, a stressful emergency, or a
+                long-overdue checkup, we&rsquo;ll meet you where you are.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <CtaBand />
     </>
   );

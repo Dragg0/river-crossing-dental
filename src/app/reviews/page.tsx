@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Star } from "lucide-react";
 import { reviews } from "@/content/reviews";
 import { siteConfig } from "@/lib/site-config";
@@ -38,6 +39,21 @@ export default function ReviewsPage() {
             These reviews come from real patients on Google and Yelp. We&rsquo;re grateful to
             every family who has trusted us with their care.
           </p>
+        </div>
+      </section>
+
+      <section className="bg-brand-cream pb-16 sm:pb-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <div className="relative aspect-[5/2] rounded-3xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/reviews/family-park.webp"
+              alt="A family laughing together outdoors on a sunny day"
+              fill
+              sizes="(min-width: 1280px) 1152px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </section>
 
