@@ -5,6 +5,12 @@ export type ServiceSection = {
   body?: string;
   list?: ListItem[];
   ordered?: boolean;
+  /**
+   * Optional inline CTA — renders as a "Learn more →" link below the
+   * section body. Use to point from a sub-section on a service page to
+   * a deeper dedicated page (e.g. cosmetic crowns -> Icon sub-page).
+   */
+  cta?: { label: string; href: string };
 };
 
 /**
@@ -157,8 +163,9 @@ export const services: Service[] = [
         body: "Crowns can save damaged teeth, preserve severe decay, and conceal cosmetic imperfections. The natural tooth is numbed and shaped so the crown fits over it. Our chairside 3D-printing technology (SprintRay Midas) lets us design, print, and place a permanent crown in a single visit — no temporary crowns, no second appointments, no weeks of waiting on a lab.",
       },
       {
-        heading: "ICON White Spot Treatment",
-        body: "White spots can form from excessive fluoride, orthodontic treatment, enamel thinning, or poor hygiene — and sometimes indicate a developing cavity. ICON resin painlessly penetrates the outer tooth layer, fills damaged pores to block cavity-causing bacteria, and blends discoloration with the natural tooth color — without invasive removal.",
+        heading: "Icon® White Spot Treatment",
+        body: "Icon is one of our most-requested cosmetic treatments — especially for patients who finished braces with chalky white squares where the brackets used to sit. The resin-infiltration process is painless, requires no drilling, and completes in a single visit. White spots from fluorosis, early demineralization, and post-orthodontic decalcification can all be addressed without removing any natural tooth structure.",
+        cta: { label: "Learn more about Icon", href: "/services/cosmetic-dentistry/icon" },
       },
     ],
     closingHeading: "Your new smile, your way.",

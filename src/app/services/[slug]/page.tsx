@@ -240,6 +240,15 @@ export default async function ServicePage({
                 {section.list && (
                   <ItemList items={section.list} ordered={section.ordered} />
                 )}
+                {section.cta && (
+                  <Link
+                    href={section.cta.href}
+                    className="mt-4 inline-flex items-center text-sm font-semibold text-brand-coral hover:text-brand-coral-dark"
+                  >
+                    {section.cta.label}
+                    <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                )}
               </article>
             ))}
           </div>
