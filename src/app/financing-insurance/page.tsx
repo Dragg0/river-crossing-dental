@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Check, FileText, CreditCard, Shield, Sparkles, ArrowRight, ExternalLink } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
@@ -48,6 +49,21 @@ export default function FinancingInsurancePage() {
             are exploring financing options, or are looking for a great deal on your first visit,
             we have solutions designed to fit your budget and your life.
           </p>
+        </div>
+      </section>
+
+      <section className="bg-brand-cream pb-16 sm:pb-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <div className="relative aspect-[5/2] rounded-3xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/financing-insurance/family.webp"
+              alt="Family of four smiling together at home"
+              fill
+              sizes="(min-width: 1280px) 1152px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </section>
 

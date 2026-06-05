@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Radio, ScanFace, Crown, Sparkles, type LucideIcon } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 
@@ -65,6 +66,21 @@ export default function AdvancedTechnologyPage() {
             We invest in modern dental technology so our patients get the best care possible —
             faster diagnoses, more comfortable treatments, and better long-term outcomes.
           </p>
+        </div>
+      </section>
+
+      <section className="bg-brand-cream pb-16 sm:pb-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <div className="relative aspect-[5/2] rounded-3xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/advanced-technology/banner.webp"
+              alt="Dental professional holding a modern curing-light handpiece at a treatment chair"
+              fill
+              sizes="(min-width: 1280px) 1152px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </section>
 
