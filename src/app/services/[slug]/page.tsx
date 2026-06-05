@@ -113,9 +113,11 @@ export default async function ServicePage({
                 className="border-l-4 border-brand-steel-light pl-6 lg:pl-8"
               >
                 <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy mb-4">
-                  <span className="text-brand-coral font-mono text-base align-top mr-2">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                  {!service.unnumbered && (
+                    <span className="text-brand-coral font-mono text-base align-top mr-2">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  )}
                   {section.heading}
                 </h2>
                 {section.body && (

@@ -16,6 +16,12 @@ export type Service = {
   heroImageAlt?: string;
   intro: string;
   sections: ServiceSection[];
+  /**
+   * If true, suppresses the 01/02/03 numbering on section headings.
+   * Use for pages where the editorial numbering feels wrong — e.g. emergency
+   * dentistry, where a patient in pain shouldn't be reading like a brochure.
+   */
+  unnumbered?: boolean;
   closingHeading?: string;
   closingBody?: string;
 };
@@ -238,6 +244,7 @@ export const services: Service[] = [
     description:
       "Same-day appointments for sudden toothaches, dental injuries, and urgent oral health needs.",
     icon: "ambulance",
+    unnumbered: true,
     intro:
       "Dental emergencies are never planned, but when they happen, you need fast, reliable care from a team you can trust. At River Crossing Family Dental in Riverton, UT, we offer compassionate and efficient emergency dentistry services to help relieve your pain, protect your oral health, and restore your smile as quickly as possible. Whether you're experiencing a sudden toothache, have suffered a dental injury, or need same-day treatment, our experienced team is here to help.",
     sections: [
