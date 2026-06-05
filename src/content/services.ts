@@ -12,6 +12,13 @@ export type Service = {
   title: string;
   description: string;
   icon: string;
+  /**
+   * Optional dental cartoon icon (PNG). When set, takes precedence over the
+   * Lucide `icon` in the page hero. Use for service pages where a warmer,
+   * more on-brand visual reads better than a monochrome line icon.
+   */
+  iconImage?: string;
+  iconImageAlt?: string;
   heroImage?: string;
   heroImageAlt?: string;
   intro: string;
@@ -33,6 +40,8 @@ export const services: Service[] = [
     description:
       "Family-friendly care for patients of all ages — cleanings, exams, gum therapy, root canals, and more.",
     icon: "shield",
+    iconImage: "/images/service/icons/dental-hygiene.png",
+    iconImageAlt: "Tooth with health-care symbol",
     intro:
       "We believe the key to great dental health is outstanding oral care, and that's exactly what you'll find at River Crossing Family Dental. Our general dentistry services help you advance the health of your teeth and gums, and learn new ways to improve your hygiene routine at home. When you choose our team, we put the oral health and wellbeing of your family first.",
     sections: [
@@ -89,6 +98,8 @@ export const services: Service[] = [
     description:
       "Brighten and enhance your smile — whitening, veneers, bonding, crowns, and white spot treatment.",
     icon: "sparkles",
+    iconImage: "/images/service/icons/dental-care-2.png",
+    iconImageAlt: "Shiny, freshly cleaned tooth",
     heroImage: "/images/service/cosmetic.jpeg",
     heroImageAlt: "A confident person smiling — cosmetic dentistry results",
     intro:
@@ -137,6 +148,8 @@ export const services: Service[] = [
     description:
       "A durable, natural-looking solution for missing teeth — single implants, implant-supported bridges, and free consultations.",
     icon: "dentures",
+    iconImage: "/images/service/icons/tooth-extraction.png",
+    iconImageAlt: "Tooth being placed between two healthy teeth",
     heroImage: "/images/service/implants.jpeg",
     heroImageAlt: "Illustration of a dental implant placed among healthy teeth",
     intro:
@@ -216,6 +229,8 @@ export const services: Service[] = [
     description:
       "Straighter, healthier smiles for children and adults — Invisalign (including Teen and First), traditional braces, and HealthyStart for kids.",
     icon: "smile",
+    iconImage: "/images/service/icons/dental-care-3.png",
+    iconImageAlt: "Healthy tooth marker",
     heroImage: "/images/service/orthodontics.webp",
     heroImageAlt: "A teen with a confident smile, suitable for Invisalign treatment",
     intro:
@@ -244,6 +259,8 @@ export const services: Service[] = [
     description:
       "Same-day appointments for sudden toothaches, dental injuries, and urgent oral health needs.",
     icon: "ambulance",
+    iconImage: "/images/service/icons/toothache.png",
+    iconImageAlt: "Tooth with pain indicator",
     unnumbered: true,
     intro:
       "Dental emergencies are never planned, but when they happen, you need fast, reliable care from a team you can trust. At River Crossing Family Dental in Riverton, UT, we offer compassionate and efficient emergency dentistry services to help relieve your pain, protect your oral health, and restore your smile as quickly as possible. Whether you're experiencing a sudden toothache, have suffered a dental injury, or need same-day treatment, our experienced team is here to help.",

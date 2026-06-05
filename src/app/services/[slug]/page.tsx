@@ -63,8 +63,18 @@ export default async function ServicePage({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-center">
             <div className={service.heroImage ? "lg:col-span-3 space-y-5" : "lg:col-span-5 max-w-3xl space-y-5"}>
-              <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-brand-navy shadow-sm">
-                <Icon className="h-7 w-7" />
+              <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-brand-navy shadow-sm overflow-hidden">
+                {service.iconImage ? (
+                  <Image
+                    src={service.iconImage}
+                    alt={service.iconImageAlt ?? ""}
+                    width={64}
+                    height={64}
+                    className="h-12 w-12 object-contain"
+                  />
+                ) : (
+                  <Icon className="h-7 w-7" />
+                )}
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold text-brand-navy leading-tight">
                 {service.title}
