@@ -18,9 +18,13 @@ const specials = [
 ];
 
 const membershipTiers = [
-  { label: "Individual", price: "$197", note: "Per person, per year" },
-  { label: "Child", price: "$164", note: "Per child, per year" },
-  { label: "Additional", price: "$164", note: "Each additional family member" },
+  { label: "Adult", price: "$249", note: "Per adult, per year" },
+  { label: "Child", price: "$216", note: "Age 14 and under, per year" },
+  {
+    label: "Households of 3+",
+    price: "Discount",
+    note: "Ask our team about multi-member pricing",
+  },
 ];
 
 const acceptedPayment = [

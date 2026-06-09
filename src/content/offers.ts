@@ -13,6 +13,9 @@ export type Offer = {
   image: string;
   imageAlt: string;
   intro: string;
+  detailsEyebrow: string;
+  detailsHeading: string;
+  detailsNote?: string;
   includes?: { label: string; description: string }[];
   features?: string[];
   testimonial?: OfferTestimonial;
@@ -26,16 +29,20 @@ export const offers: Offer[] = [
     tagline: "Cleaning, Exam & X-Ray",
     description:
       "A complete new-patient visit at a price that makes it simple to get started on your oral health journey.",
-    finePrint: "New patients only.",
+    finePrint: "New patients only. Routine prophylaxis cleaning only.",
     image: "/images/specials/cleaning-family.webp",
     imageAlt: "Three generations of a family laughing outdoors",
     intro:
       "At River Crossing Family Dental in Riverton, UT, we believe everyone deserves a beautiful, confident smile — and routine professional cleanings and exams are essential to oral wellness, even if you brush and floss regularly. Our team removes plaque, tartar, and food debris from hard-to-reach areas that can otherwise lead to gum disease and tooth decay.",
+    detailsEyebrow: "What the $89 covers",
+    detailsHeading: "Your preventive new-patient visit.",
+    detailsNote:
+      "This special includes a routine prophylaxis cleaning. If your exam shows active gum disease and you need periodontal therapy or a deep cleaning, our team will explain the recommended care and cost before treatment.",
     includes: [
       {
-        label: "Professional cleaning",
+        label: "Routine prophylaxis cleaning",
         description:
-          "Plaque and tartar removed from every surface of your teeth, including the spots a toothbrush can't reach.",
+          "A preventive cleaning for patients without active periodontal disease.",
       },
       {
         label: "Thorough exam",
@@ -66,25 +73,20 @@ export const offers: Offer[] = [
     imageAlt: "Dentist reviewing a dental X-ray on a monitor",
     intro:
       "Are you experiencing a dental emergency? Our experienced team provides the care you need, when you need it. We reserve time in our daily schedule so we can see urgent patients the same day whenever possible.",
+    detailsEyebrow: "What the $49 covers",
+    detailsHeading: "An emergency exam and necessary X-ray.",
+    detailsNote:
+      "Treatment recommended after the exam — including fillings, crowns, root canal therapy, or extraction — is not included in the $49 special. We will explain your options and costs before beginning treatment.",
     includes: [
       {
-        label: "Toothache relief",
-        description: "We diagnose and often treat same-day to get you out of pain.",
+        label: "Problem-focused emergency exam",
+        description:
+          "The dentist evaluates the source of your pain, injury, swelling, or other urgent concern.",
       },
       {
-        label: "Emergency tooth repair",
+        label: "Necessary digital X-ray",
         description:
-          "Filling or crown for a chipped or broken tooth to prevent further damage.",
-      },
-      {
-        label: "Root canal therapy",
-        description:
-          "After getting you numb, we remove infected pulp and relieve pain.",
-      },
-      {
-        label: "Dental extractions",
-        description:
-          "If a tooth is beyond repair, we'll create a treatment plan that's best for you.",
+          "Diagnostic imaging of the problem area helps us identify the cause and recommend next steps.",
       },
     ],
     testimonial: {
@@ -105,21 +107,25 @@ export const offers: Offer[] = [
     imageAlt: "Two clear orthodontic aligners held to form a heart shape",
     intro:
       "Searching for top-quality orthodontic care for your family in Riverton, UT? River Crossing Family Dental offers a variety of orthodontic options so patients can decide what's best for them. Our free consultation lets us learn about the patient's needs and determine the perfect treatment.",
+    detailsEyebrow: "What the consultation includes",
+    detailsHeading: "A no-cost orthodontic evaluation.",
+    detailsNote:
+      "Orthodontic treatment and appliances are not included in the complimentary consultation. If treatment is recommended, we will review the plan and cost with you.",
     includes: [
       {
-        label: "Traditional braces",
+        label: "Smile and bite evaluation",
         description:
-          "Modern metal brackets and wires — smaller, more comfortable, and more customizable than ever.",
+          "We evaluate alignment, spacing, bite concerns, and your goals for treatment.",
       },
       {
-        label: "Invisalign®",
+        label: "Treatment recommendations",
         description:
-          "Translucent, removable clear aligners — virtually invisible and convenient. Including Invisalign Teen and Invisalign First.",
+          "We discuss appropriate options, which may include braces, Invisalign®, or HealthyStart®.",
       },
       {
-        label: "HealthyStart®",
+        label: "Questions and next steps",
         description:
-          "Gentle orthodontic program for children ages 6–12, often worn during sleep.",
+          "You will have time to ask questions and understand what comes next if you choose treatment.",
       },
     ],
   },
