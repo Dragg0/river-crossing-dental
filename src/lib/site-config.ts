@@ -29,7 +29,7 @@ export const siteConfig = {
   hours: [
     { day: "Monday", open: "8:00", close: "17:00", display: "8:00 AM – 5:00 PM" },
     { day: "Tuesday", open: "8:00", close: "16:00", display: "8:00 AM – 4:00 PM" },
-    { day: "Wednesday", open: "7:00", close: "17:00", display: "7:00 AM – 5:00 PM" },
+    { day: "Wednesday", open: "8:00", close: "17:00", display: "8:00 AM – 5:00 PM" },
     { day: "Thursday", open: "8:00", close: "16:00", display: "8:00 AM – 4:00 PM" },
     { day: "Friday", open: null, close: null, display: "Closed" },
     { day: "Saturday", open: null, close: null, display: "Closed" },
