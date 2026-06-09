@@ -80,7 +80,7 @@ export default function Home() {
               <span className="block text-brand-steel-light">Family Dental &amp; Orthodontics</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-100 leading-relaxed max-w-2xl mx-auto drop-shadow">
-              {siteConfig.tagline}. Comfortable, modern dentistry for every member of your family.
+              {siteConfig.tagline}.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
               <a

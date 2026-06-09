@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "River Crossing Family Dental & Orthodontics",
   shortName: "River Crossing Family Dental",
-  tagline: "Modern, family-friendly dentistry in Riverton, UT",
+  tagline: "Comfortable, family-friendly dental care for every age and every smile",
   description:
     "Quality modern dentistry for the entire family in Riverton, UT. General dentistry, cosmetic, orthodontics, dental implants, and emergency dental care.",
   url: "https://www.rivercrossingdental.com",
