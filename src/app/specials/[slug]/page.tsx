@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Check, Quote } from "lucide-react";
+import { ArrowLeft, Check, Info, Quote } from "lucide-react";
 import type { Metadata } from "next";
 import { offers } from "@/content/offers";
 import { siteConfig } from "@/lib/site-config";
@@ -99,16 +99,16 @@ export default async function SpecialPage({
         </div>
       </section>
 
-      {/* What's included */}
+      {/* Offer details */}
       {offer.includes && (
         <section className="bg-white py-16 sm:py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <div className="text-center mb-10 space-y-2">
               <p className="text-sm font-bold tracking-widest uppercase text-brand-coral">
-                What&rsquo;s included
+                {offer.detailsEyebrow}
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold text-brand-navy">
-                Everything you get with this special.
+                {offer.detailsHeading}
               </h2>
             </div>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -129,6 +129,12 @@ export default async function SpecialPage({
                 </li>
               ))}
             </ul>
+            {offer.detailsNote && (
+              <div className="mt-8 flex gap-3 rounded-lg border border-brand-steel-light bg-brand-cream p-5 text-sm leading-relaxed text-slate-700">
+                <Info className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-coral" />
+                <p>{offer.detailsNote}</p>
+              </div>
+            )}
           </div>
         </section>
       )}
