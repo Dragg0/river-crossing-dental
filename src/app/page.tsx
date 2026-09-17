@@ -18,6 +18,7 @@ import { services } from "@/content/services";
 import { offers } from "@/content/offers";
 import { siteConfig } from "@/lib/site-config";
 import { CtaBand } from "@/components/cta-band";
+import { MeetEve } from "@/components/meet-eve";
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
   shield: Shield,
@@ -102,6 +103,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <MeetEve />
 
       {/* WELCOME INTRO */}
       <section className="bg-brand-cream py-16 sm:py-20">
