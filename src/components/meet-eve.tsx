@@ -1,5 +1,6 @@
 import { Phone } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { EveVideo } from "@/components/eve-video";
 
 export function MeetEve() {
   return (
@@ -37,20 +38,7 @@ export function MeetEve() {
 
         <div className="min-w-0">
           <figure>
-            <video
-              controls
-              playsInline
-              preload="none"
-              width={1920}
-              height={1080}
-              poster="/videos/meet-eve-poster.jpg"
-              aria-label="Dr. John Peterson introduces Eve, our AI receptionist"
-              className="aspect-video w-full rounded-2xl bg-brand-navy-dark shadow-lg"
-            >
-              <source src="/videos/meet-eve.mp4" type="video/mp4" />
-              <track src="/videos/meet-eve.vtt" kind="captions" srcLang="en" label="English" />
-              <a href="/videos/meet-eve.mp4">Watch Dr. Peterson introduce Eve.</a>
-            </video>
+            <EveVideo />
             <figcaption className="mt-3 text-sm text-slate-600">
               A 30-second introduction from Dr. John Peterson. Captions included.
             </figcaption>
