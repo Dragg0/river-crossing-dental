@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
@@ -15,7 +16,7 @@ export default function PrivacyPolicyPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center space-y-3">
           <p className="text-sm font-bold tracking-widest uppercase text-brand-coral">Legal</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-brand-navy">Privacy Policy</h1>
-          <p className="text-sm text-slate-600">Last updated: June 5, 2026</p>
+          <p className="text-sm text-slate-600">Last updated: September 17, 2026</p>
         </div>
       </section>
 
@@ -29,10 +30,34 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-2xl font-bold text-brand-navy mt-8">What this website collects</h2>
           <p>
-            Browsing this site, we collect only standard, non-identifying analytics — things like
-            which pages get visited and what kind of device you&rsquo;re on. We use it to keep the
-            site working well. We don&rsquo;t use advertising trackers, and we don&rsquo;t sell or
-            share visitor information.
+            Our website host processes technical information needed to deliver this site,
+            such as requests from your browser. We also store your ad measurement preference
+            in your browser so you do not have to choose it on every visit.
+          </p>
+          <h2 className="text-2xl font-bold text-brand-navy mt-8">Optional ad and call measurement</h2>
+          <p>
+            If you choose <em>Allow measurement</em>, we load Google Ads measurement technology.
+            Google may use cookies and advertising click identifiers to connect an ad visit
+            with a subsequent call. A Google forwarding number may replace the phone number
+            shown on this website and connect your call to our office. Call reporting may
+            include caller number, call time, duration, and connection status where available.
+            This helps us understand which advertising leads to calls.
+          </p>
+          <p>
+            We configure this website measurement without personalized advertising or enhanced
+            conversions. We do not send patient records, appointment details, or call transcripts
+            through the website measurement code. Read more about{" "}
+            <a href="https://policies.google.com/technologies/partner-sites" target="_blank"
+              rel="noopener noreferrer" className="font-semibold text-brand-navy hover:text-brand-coral">
+              how Google uses information from sites that use its services
+            </a>.
+          </p>
+          <p>
+            You can decline and still use the website, call, or book. To change your choice,
+            use <em>Ad measurement preferences</em> at the bottom of any page. Declining stops
+            the website from loading Google measurement on subsequent visits; it does not
+            delete information already collected. Calls placed directly from a Google ad
+            are measured separately by Google.
           </p>
           <p>
             When you click <em>Book Appointment</em>, you leave our site and continue on{" "}
@@ -45,20 +70,19 @@ export default function PrivacyPolicyPage() {
               Modento
             </a>
             , our scheduling provider — anything you enter there is governed by Modento&rsquo;s
-            privacy practices. When you tap a phone number, you&rsquo;re calling our office
-            directly.
+            privacy practices. When you tap a phone number, your call connects to our office,
+            either directly or through the forwarding number described above.
           </p>
 
           <h2 className="text-2xl font-bold text-brand-navy mt-8">Questions</h2>
           <p>
             For anything about your records, your privacy, or our HIPAA Notice of Privacy Practices,
             the fastest path is to call us at{" "}
-            <a
-              href={`tel:${siteConfig.phone.tel}`}
+            <PhoneLink
               className="font-semibold text-brand-navy hover:text-brand-coral"
             >
-              {siteConfig.phone.display}
-            </a>{" "}
+              <PhoneNumber />
+            </PhoneLink>{" "}
             or visit our{" "}
             <Link href="/contact" className="font-semibold text-brand-navy hover:text-brand-coral">
               contact page

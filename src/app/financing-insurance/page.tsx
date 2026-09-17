@@ -1,8 +1,8 @@
+import { PhoneLink } from "@/components/call-measurement";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { Check, FileText, CreditCard, Shield, Sparkles, ArrowRight, ExternalLink } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
 import { CtaBand } from "@/components/cta-band";
 
 export const metadata: Metadata = {
@@ -146,12 +146,11 @@ export default function FinancingInsurancePage() {
               <FileText className="h-4 w-4" />
               Download brochure (PDF)
             </a>
-            <a
-              href={`tel:${siteConfig.phone.tel}`}
+            <PhoneLink
               className="inline-flex h-12 items-center justify-center rounded-full border-2 border-white/40 px-8 text-sm font-semibold text-white hover:bg-white/10"
             >
               Call to enroll
-            </a>
+            </PhoneLink>
           </div>
         </div>
       </section>
@@ -189,12 +188,11 @@ export default function FinancingInsurancePage() {
                   Apply with CareCredit
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
-                <a
-                  href={`tel:${siteConfig.phone.tel}`}
+                <PhoneLink
                   className="inline-flex h-11 items-center justify-center rounded-full border-2 border-brand-navy px-6 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
                 >
                   Ask about in-house financing
-                </a>
+                </PhoneLink>
               </div>
             </div>
 

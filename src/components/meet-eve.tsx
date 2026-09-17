@@ -1,5 +1,5 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import { Phone } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
 import { EveVideo } from "@/components/eve-video";
 
 export function MeetEve() {
@@ -22,14 +22,13 @@ export function MeetEve() {
             her appointment booking ourselves, and it&rsquo;s working well.
             Give her a call!
           </p>
-          <a
-            href={`tel:${siteConfig.phone.tel}`}
+          <PhoneLink
             className="inline-flex min-h-12 w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full bg-brand-navy px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-brand-navy-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy sm:w-auto"
           >
             <Phone className="h-5 w-5 shrink-0" aria-hidden="true" />
             <span>Call Eve</span>
-            <span>{siteConfig.phone.display}</span>
-          </a>
+            <span><PhoneNumber /></span>
+          </PhoneLink>
           <p className="text-sm leading-relaxed text-slate-600">
             Appointments take place during our Monday&ndash;Thursday office hours,
             subject to availability.

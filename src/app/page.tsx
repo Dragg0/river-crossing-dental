@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -92,13 +93,12 @@ export default function Home() {
               >
                 Book Appointment
               </a>
-              <a
-                href={`tel:${siteConfig.phone.tel}`}
+              <PhoneLink
                 className="w-full sm:w-auto inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-white/40 bg-white/10 px-10 text-base font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
               >
                 <Phone className="h-4 w-4" />
-                {siteConfig.phone.display}
-              </a>
+                <PhoneNumber />
+              </PhoneLink>
             </div>
           </div>
         </div>
@@ -313,12 +313,11 @@ export default function Home() {
                 <li className="flex gap-3">
                   <Phone className="h-5 w-5 mt-1 flex-shrink-0 text-brand-coral" />
                   <div>
-                    <a
-                      href={`tel:${siteConfig.phone.tel}`}
+                    <PhoneLink
                       className="font-semibold text-brand-navy hover:text-brand-coral"
                     >
-                      {siteConfig.phone.display}
-                    </a>
+                      <PhoneNumber />
+                    </PhoneLink>
                     <p className="text-sm text-slate-500">
                       Call for same-day emergency appointments.
                     </p>

@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -130,16 +131,15 @@ export default async function ServicePage({
                 {urgent ? urgent.intro : service.intro}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <a
-                  href={`tel:${siteConfig.phone.tel}`}
+                <PhoneLink
                   className={
                     urgent
                       ? "inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
                       : "inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
                   }
                 >
-                  Call {siteConfig.phone.display}
-                </a>
+                  Call <PhoneNumber />
+                </PhoneLink>
                 <a
                   href={siteConfig.booking}
                   target="_blank"

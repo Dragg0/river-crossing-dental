@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -139,12 +140,11 @@ export default function IconWhiteSpotTreatmentPage() {
                 >
                   Book a Consultation
                 </a>
-                <a
-                  href={`tel:${siteConfig.phone.tel}`}
+                <PhoneLink
                   className="inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
                 >
-                  Call {siteConfig.phone.display}
-                </a>
+                  Call <PhoneNumber />
+                </PhoneLink>
               </div>
             </div>
             <div className="lg:col-span-2 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl">

@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { siteConfig } from "@/lib/site-config";
+import { CallMeasurement } from "@/components/call-measurement";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,9 +84,11 @@ export default function RootLayout({
             __html: JSON.stringify(localBusinessJsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <CallMeasurement>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </CallMeasurement>
       </body>
     </html>
   );

@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
@@ -77,12 +78,11 @@ export function SiteFooter() {
               </li>
               <li className="flex gap-2">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0 text-brand-steel" />
-                <a
-                  href={`tel:${siteConfig.phone.tel}`}
+                <PhoneLink
                   className="text-slate-300 hover:text-white"
                 >
-                  {siteConfig.phone.display}
-                </a>
+                  <PhoneNumber />
+                </PhoneLink>
               </li>
             </ul>
           </div>

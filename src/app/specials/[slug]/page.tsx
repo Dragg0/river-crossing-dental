@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -87,12 +88,11 @@ export default async function SpecialPage({
                 >
                   Book Appointment
                 </a>
-                <a
-                  href={`tel:${siteConfig.phone.tel}`}
+                <PhoneLink
                   className="inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
                 >
-                  Call {siteConfig.phone.display}
-                </a>
+                  Call <PhoneNumber />
+                </PhoneLink>
               </div>
             </div>
           </div>

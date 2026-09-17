@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
@@ -59,12 +60,11 @@ export default function WebsiteAccessibilityPage() {
               <span className="text-brand-coral mt-1.5 flex-shrink-0">•</span>
               <span>
                 Call our office:{" "}
-                <a
-                  href={`tel:${siteConfig.phone.tel}`}
+                <PhoneLink
                   className="font-semibold text-brand-navy hover:text-brand-coral"
                 >
-                  {siteConfig.phone.display}
-                </a>
+                  <PhoneNumber />
+                </PhoneLink>
               </span>
             </li>
             <li className="flex gap-2">

@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import type { Metadata } from "next";
 import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
@@ -32,12 +33,11 @@ export default function ContactPage() {
                 <Phone className="h-6 w-6" />
               </div>
               <h2 className="text-xl font-bold text-brand-navy">Call</h2>
-              <a
-                href={`tel:${siteConfig.phone.tel}`}
+              <PhoneLink
                 className="block text-2xl font-extrabold text-brand-navy hover:text-brand-coral"
               >
-                {siteConfig.phone.display}
-              </a>
+                <PhoneNumber />
+              </PhoneLink>
               <p className="text-sm text-slate-600">Same-day emergency appointments available.</p>
             </div>
 
@@ -109,12 +109,11 @@ export default function ContactPage() {
               </ul>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Need to be seen for a dental emergency outside these hours? Call{" "}
-                <a
-                  href={`tel:${siteConfig.phone.tel}`}
+                <PhoneLink
                   className="font-semibold text-brand-navy hover:text-brand-coral"
                 >
-                  {siteConfig.phone.display}
-                </a>{" "}
+                  <PhoneNumber />
+                </PhoneLink>{" "}
                 — we keep room in the daily schedule for urgent visits.
               </p>
             </div>

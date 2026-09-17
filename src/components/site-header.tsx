@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, ChevronDown } from "lucide-react";
@@ -61,13 +62,12 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2 lg:gap-4">
-          <a
-            href={`tel:${siteConfig.phone.tel}`}
+          <PhoneLink
             className="hidden lg:inline-flex items-center gap-2 text-sm font-semibold text-brand-navy hover:text-brand-coral"
           >
             <Phone className="h-4 w-4" />
-            {siteConfig.phone.display}
-          </a>
+            <PhoneNumber />
+          </PhoneLink>
           <a
             href={siteConfig.booking}
             target="_blank"

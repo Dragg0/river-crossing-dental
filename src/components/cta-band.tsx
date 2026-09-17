@@ -1,3 +1,4 @@
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import { siteConfig } from "@/lib/site-config";
 import { Phone } from "lucide-react";
 
@@ -34,13 +35,12 @@ export function CtaBand({
             >
               Book Appointment
             </a>
-            <a
-              href={`tel:${siteConfig.phone.tel}`}
+            <PhoneLink
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-white/40 px-6 text-sm font-semibold text-white hover:bg-white/10"
             >
               <Phone className="h-4 w-4" />
-              {siteConfig.phone.display}
-            </a>
+              <PhoneNumber />
+            </PhoneLink>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
@@ -122,12 +123,11 @@ export function MobileMenu() {
         </nav>
 
         <div className="border-t border-slate-200 p-4 space-y-3 bg-white flex-shrink-0">
-          <a
-            href={`tel:${siteConfig.phone.tel}`}
+          <PhoneLink
             className="block text-center text-sm font-medium text-brand-navy"
           >
-            Call {siteConfig.phone.display}
-          </a>
+            Call <PhoneNumber />
+          </PhoneLink>
           <a
             href={siteConfig.booking}
             target="_blank"
