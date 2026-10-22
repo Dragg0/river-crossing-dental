@@ -8,6 +8,7 @@ import {
   ArrowRight,
   CalendarClock,
   HeartPulse,
+  Phone,
   PhoneCall,
   Shield,
   Smile,
@@ -130,14 +131,39 @@ export default async function ServicePage({
               <p className="text-lg text-slate-700 leading-relaxed">
                 {urgent ? urgent.intro : service.intro}
               </p>
+              {urgent?.offer && (
+                <div className="rounded-2xl border border-brand-coral/30 bg-white p-5 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-coral">
+                    New patients
+                  </p>
+                  <p className="mt-1 text-2xl font-bold text-brand-navy sm:text-3xl">
+                    <span className="text-brand-coral">{urgent.offer.price}</span>{" "}
+                    {urgent.offer.title}
+                  </p>
+                  <p className="mt-2 text-base leading-relaxed text-slate-700">
+                    {urgent.offer.body}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    {urgent.offer.finePrint}
+                  </p>
+                  <Link
+                    href={urgent.offer.href}
+                    className="mt-3 inline-flex items-center text-sm font-semibold text-brand-coral hover:text-brand-coral-dark"
+                  >
+                    {urgent.offer.linkLabel}
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </div>
+              )}
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <PhoneLink
                   className={
                     urgent
-                      ? "inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
+                      ? "inline-flex h-14 items-center justify-center gap-2 rounded-full bg-brand-coral px-8 text-base font-bold text-white shadow-md hover:bg-brand-coral-dark"
                       : "inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
                   }
                 >
+                  {urgent && <Phone className="h-5 w-5" aria-hidden="true" />}
                   Call <PhoneNumber />
                 </PhoneLink>
                 <a
@@ -146,13 +172,16 @@ export default async function ServicePage({
                   rel="noopener noreferrer"
                   className={
                     urgent
-                      ? "inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
+                      ? "inline-flex h-14 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-base font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
                       : "inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
                   }
                 >
-                  Book Appointment
+                  {urgent ? "Book Online" : "Book Appointment"}
                 </a>
               </div>
+              {urgent?.afterHours && (
+                <p className="text-sm leading-relaxed text-slate-600">{urgent.afterHours}</p>
+              )}
             </div>
             {urgent ? (
               <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">

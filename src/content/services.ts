@@ -28,6 +28,17 @@ export type UrgentHero = {
   intro: string;
   cards: { iconKey: string; label: string; description: string }[];
   steps: { iconKey: string; label: string; description: string }[];
+  /** Shown above the call and book buttons when the visit has a posted offer. */
+  offer?: {
+    price: string;
+    title: string;
+    body: string;
+    finePrint: string;
+    href: string;
+    linkLabel: string;
+  };
+  /** Existing after-hours scheduling note. Omit when the site has no such service. */
+  afterHours?: string;
 };
 
 export type Service = {
@@ -269,6 +280,10 @@ export const services: Service[] = [
       {
         heading: "Invisalign®",
         body: "Translucent, smooth, durable aligners that handle underbite, overbite, gaps, and crowding. Treatment can be as short as six months; aligners are worn up to 22 hours a day, removed only for eating and cleaning. Each aligner gradually shifts your teeth toward alignment. Dr. Peterson is a certified Invisalign provider, including for Invisalign Teen and Invisalign First.",
+        cta: {
+          label: "Invisalign for adults and teens",
+          href: "/services/orthodontics/invisalign",
+        },
       },
       {
         heading: "Traditional Braces",
@@ -331,6 +346,17 @@ export const services: Service[] = [
           description: "We help you get comfortable, explain options clearly, and treat what we can.",
         },
       ],
+      offer: {
+        price: "$49",
+        title: "Emergency exam & X-ray",
+        body: "New patients can come in for a problem-focused exam and the X-ray we need to see what's going on. We save room for same-day visits whenever possible.",
+        finePrint:
+          "New patients only. Fillings, crowns, root canals, and extractions are not included. We'll explain the plan and the cost before any treatment.",
+        href: "/specials/exam",
+        linkLabel: "See what the $49 includes",
+      },
+      afterHours:
+        "Calling after hours? Eve, our AI receptionist, can help new patients schedule — nights and weekends included. Appointments are during Monday–Thursday office hours.",
     },
     intro:
       "Dental emergencies are never planned, but when they happen, you need fast, reliable care from a team you can trust. At River Crossing Family Dental in Riverton, UT, we offer compassionate and efficient emergency dentistry services to help relieve your pain, protect your oral health, and restore your smile as quickly as possible. Whether you're experiencing a sudden toothache, have suffered a dental injury, or need same-day treatment, our experienced team is here to help.",

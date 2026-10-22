@@ -26,6 +26,13 @@ export const siteConfig = {
 
   booking: "https://book.modento.io/river-crossing-dental",
 
+  // Place ID confirmed from this site's Google Maps embed
+  // (feature 0x875285b28bbe5f9b:0x41f4ade821c0c5ad): River Crossing
+  // Family Dental, 4121 13400 S Unit A, Riverton, UT 84096,
+  // (801) 254-8812, rated 4.7 from 345 reviews.
+  googleReviewUrl:
+    "https://search.google.com/local/writereview?placeid=ChIJm1--i7KFUocRrcXAIeit9EE",
+
   hours: [
     { day: "Monday", open: "8:00", close: "17:00", display: "8:00 AM – 5:00 PM" },
     { day: "Tuesday", open: "8:00", close: "16:00", display: "8:00 AM – 4:00 PM" },
@@ -75,6 +82,7 @@ export const nav: NavItem[] = [
       { label: "Icon White Spot Treatment", href: "/services/cosmetic-dentistry/icon" },
       { label: "Dental Implants", href: "/services/dental-implants" },
       { label: "Orthodontics", href: "/services/orthodontics" },
+      { label: "Invisalign", href: "/services/orthodontics/invisalign" },
       { label: "Invisalign Teen", href: "/services/orthodontics/invisalign-teen" },
       { label: "Invisalign First", href: "/services/orthodontics/invisalign-first" },
       { label: "Emergency Dentistry", href: "/services/emergency-dentistry" },

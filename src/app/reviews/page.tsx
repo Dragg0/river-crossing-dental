@@ -7,8 +7,33 @@ import { CtaBand } from "@/components/cta-band";
 
 export const metadata: Metadata = {
   title: "Patient Reviews",
-  description: `See what patients say about ${siteConfig.shortName}. 5/5 average rating from real Riverton, UT patients.`,
+  description: `See what patients say about ${siteConfig.shortName}. 4.7 stars from 345+ Google reviews in Riverton, UT.`,
 };
+
+function GoogleRatingStars() {
+  const rating = 4.7;
+  return (
+    <div
+      className="flex justify-center gap-1 text-amber-400"
+      aria-label="4.7 out of 5 stars"
+    >
+      {Array.from({ length: 5 }).map((_, i) => {
+        const fill = Math.min(1, Math.max(0, rating - i));
+        return (
+          <span key={i} className="relative inline-block h-6 w-6" aria-hidden="true">
+            <Star className="h-6 w-6 text-amber-200" />
+            <span
+              className="absolute inset-y-0 left-0 overflow-hidden"
+              style={{ width: `${fill * 100}%` }}
+            >
+              <Star className="h-6 w-6 fill-current" />
+            </span>
+          </span>
+        );
+      })}
+    </div>
+  );
+}
 
 const sourceColors: Record<string, string> = {
   Google: "bg-white text-slate-700",
@@ -25,20 +50,44 @@ export default function ReviewsPage() {
             Patient Reviews
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-brand-navy">
-            5/5 average rating from our patients.
+            4.7 stars from 345+ Google reviews.
           </h1>
-          <div
-            className="flex justify-center gap-1 text-amber-400"
-            aria-label="5 out of 5 stars"
-          >
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-6 w-6 fill-current" />
-            ))}
-          </div>
+          <GoogleRatingStars />
           <p className="text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed">
             These reviews come from real patients on Google and Yelp. We&rsquo;re grateful to
             every family who has trusted us with their care.
           </p>
+          <div className="flex flex-col items-center gap-3 pt-2">
+            <a
+              href={siteConfig.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
+            >
+              Leave us a Google review
+            </a>
+            <p className="text-sm text-slate-600">
+              Or share one on{" "}
+              <a
+                href={siteConfig.social.yelp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-brand-navy underline-offset-2 hover:text-brand-coral hover:underline"
+              >
+                Yelp
+              </a>{" "}
+              or{" "}
+              <a
+                href={siteConfig.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-brand-navy underline-offset-2 hover:text-brand-coral hover:underline"
+              >
+                Facebook
+              </a>
+              .
+            </p>
+          </div>
         </div>
       </section>
 
@@ -90,14 +139,22 @@ export default function ReviewsPage() {
             ))}
           </div>
 
-          <div className="mt-12 text-center text-sm text-slate-600">
-            <p>
-              Have a great experience to share? Leave us a review on{" "}
+          <div className="mt-12 flex flex-col items-center gap-3 text-center">
+            <a
+              href={siteConfig.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
+            >
+              Leave us a Google review
+            </a>
+            <p className="text-sm text-slate-600">
+              You can also leave a note on{" "}
               <a
                 href={siteConfig.social.yelp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-brand-navy hover:text-brand-coral"
+                className="font-semibold text-brand-navy underline-offset-2 hover:text-brand-coral hover:underline"
               >
                 Yelp
               </a>{" "}
@@ -106,7 +163,7 @@ export default function ReviewsPage() {
                 href={siteConfig.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-brand-navy hover:text-brand-coral"
+                className="font-semibold text-brand-navy underline-offset-2 hover:text-brand-coral hover:underline"
               >
                 Facebook
               </a>
