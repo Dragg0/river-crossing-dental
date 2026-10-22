@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T23:30:00Z",
+  "title": "Design System: River Crossing Family Dental",
+  "extensions": {
+    "colorMeta": {
+      "navy": { "role": "primary", "displayName": "Practice Navy", "canonical": "#2c4a6b", "tonalRamp": ["#0e1c2c", "#163049", "#1c3554", "#244468", "#2c4a6b", "#4d6d8e", "#7ba0bd", "#d5e2ec"] },
+      "navy-dark": { "role": "primary", "displayName": "Navy Dark", "canonical": "#1c3554", "tonalRamp": ["#0a1420", "#102033", "#163049", "#1c3554", "#244468", "#3d5d7c", "#6d8eab", "#c9d8e6"] },
+      "steel": { "role": "secondary", "displayName": "Steel", "canonical": "#7ba0bd", "tonalRamp": ["#1c3344", "#2c4d63", "#3d6882", "#5a87a4", "#7ba0bd", "#9bb8cc", "#c5d7e3", "#e7f0f5"] },
+      "steel-light": { "role": "secondary", "displayName": "Steel Light", "canonical": "#b4c8d8", "tonalRamp": ["#243846", "#3a5668", "#567488", "#7a98ad", "#b4c8d8", "#c9d8e4", "#deeaF1", "#f3f7fa"] },
+      "cream": { "role": "neutral", "displayName": "Cream", "canonical": "#f7f3ec", "tonalRamp": ["#3a342c", "#5c5348", "#7e7264", "#a89b8a", "#d4c8b6", "#e8dfd2", "#f7f3ec", "#fcfaf7"] },
+      "coral": { "role": "primary", "displayName": "Coral", "canonical": "#e07856", "tonalRamp": ["#3d1c12", "#6b301f", "#9a452c", "#c8633f", "#e07856", "#ea9b80", "#f3c4b3", "#fbeae4"] },
+      "coral-dark": { "role": "primary", "displayName": "Coral Dark", "canonical": "#c8633f", "tonalRamp": ["#2e140c", "#552414", "#7c351c", "#a34728", "#c8633f", "#d88868", "#eab59e", "#f7e4dc"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0f1f33", "tonalRamp": ["#070e16", "#0f1f33", "#1c334c", "#2c4a6b", "#4d6d8e", "#7b93a8", "#b7c4d0", "#e8eef3"] },
+      "white": { "role": "neutral", "displayName": "White", "canonical": "#ffffff", "tonalRamp": ["#1c2430", "#3a4654", "#5c6b7c", "#8b98a6", "#c5ced6", "#e6ebf0", "#f7f8fa", "#ffffff"] },
+      "body": { "role": "neutral", "displayName": "Slate Body", "canonical": "#334155", "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1", "#f1f5f9"] },
+      "muted": { "role": "neutral", "displayName": "Slate Muted", "canonical": "#475569", "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1", "#f8fafc"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page title." },
+      "headline": { "displayName": "Headline", "purpose": "Section title." },
+      "title": { "displayName": "Title", "purpose": "Card title." },
+      "body": { "displayName": "Body", "purpose": "Paragraph under a heading." },
+      "label": { "displayName": "Label", "purpose": "Small uppercase line above a heading." }
+    },
+    "shadows": [
+      { "name": "card-rest", "value": "0 1px 2px rgba(15, 31, 51, 0.06)", "purpose": "Cards at rest." },
+      { "name": "button", "value": "0 4px 6px rgba(15, 31, 51, 0.12)", "purpose": "Coral pill." },
+      { "name": "photo", "value": "0 20px 25px rgba(15, 31, 51, 0.15)", "purpose": "Hero photograph." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Color and shadow transitions on buttons and cards." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The coral pill for the main action.",
+      "html": "<button class=\"ds-btn-primary\">Book Appointment</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 32px; border: 0; border-radius: 9999px; background: #e07856; color: #fff; font: 700 14px/1 Geist, sans-serif; box-shadow: 0 4px 6px rgba(15, 31, 51, 0.12); cursor: pointer; } .ds-btn-primary:hover { background: #c8633f; } .ds-btn-primary:focus-visible { outline: 2px solid #2c4a6b; outline-offset: 4px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Navy outline for the second action.",
+      "html": "<button class=\"ds-btn-secondary\">Call 801-254-8812</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 32px; border: 2px solid #2c4a6b; border-radius: 9999px; background: transparent; color: #2c4a6b; font: 600 14px/1 Geist, sans-serif; cursor: pointer; } .ds-btn-secondary:hover { background: #2c4a6b; color: #fff; } .ds-btn-secondary:focus-visible { outline: 2px solid #2c4a6b; outline-offset: 4px; }"
+    },
+    {
+      "name": "Text Card",
+      "kind": "card",
+      "refersTo": "button-secondary",
+      "description": "Cream card for a peer point on a white band.",
+      "html": "<article class=\"ds-card\"><h3>Comfortable care</h3><p>Plain words about what to expect.</p></article>",
+      "css": ".ds-card { background: #f7f3ec; border-radius: 16px; padding: 24px; } .ds-card h3 { margin: 0 0 8px; color: #2c4a6b; font: 700 20px/1.3 Geist, sans-serif; } .ds-card p { margin: 0; color: #334155; font: 400 16px/1.6 Geist, sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The family practice",
+    "overview": "Cream paper, navy type, and coral only for the action. Pages alternate cream and white. Photography is real and rounded. Copy is warm and short.",
+    "keyCharacteristics": [
+      "Cream and white take turns",
+      "Coral is the one action color",
+      "Buttons are 48px pills and full width on a phone",
+      "One idea per band"
+    ],
+    "rules": [
+      { "name": "The One Action Rule", "body": "Coral fills the button that should be tapped. A second action is a navy outline.", "section": "colors" },
+      { "name": "The Same Voice Rule", "body": "Use the same type sizes as the rest of the site.", "section": "typography" },
+      { "name": "The Flat Band Rule", "body": "A section band is flat. Shadow belongs to the photo or card inside it.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do alternate cream and white bands.",
+      "Do show a published price as a large number, then the name, then the limit."
+    ],
+    "donts": [
+      "Don't add a new typeface or accent color.",
+      "Don't stack several identical card grids down one page.",
+      "Don't crop a landscape photo into a tall portrait frame."
+    ]
+  }
+}

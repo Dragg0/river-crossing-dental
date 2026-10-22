@@ -94,7 +94,7 @@ export default async function ServicePage({
           <div
             className={
               urgent
-                ? "grid lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] gap-10 lg:gap-16 items-center"
+                ? "grid lg:grid-cols-2 gap-10 lg:gap-16 items-start"
                 : "grid lg:grid-cols-5 gap-10 lg:gap-14 items-center"
             }
           >
@@ -107,63 +107,58 @@ export default async function ServicePage({
                     : "lg:col-span-5 max-w-3xl space-y-5"
               }
             >
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-brand-navy shadow-sm overflow-hidden">
-                {service.iconImage ? (
-                  <Image
-                    src={service.iconImage}
-                    alt={service.iconImageAlt ?? ""}
-                    width={64}
-                    height={64}
-                    className="h-12 w-12 object-contain"
-                  />
-                ) : (
-                  <Icon className="h-7 w-7" />
-                )}
-              </div>
+              {!urgent && (
+                <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-brand-navy shadow-sm overflow-hidden">
+                  {service.iconImage ? (
+                    <Image
+                      src={service.iconImage}
+                      alt={service.iconImageAlt ?? ""}
+                      width={64}
+                      height={64}
+                      className="h-12 w-12 object-contain"
+                    />
+                  ) : (
+                    <Icon className="h-7 w-7" />
+                  )}
+                </div>
+              )}
               {urgent && (
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-coral">
                   {urgent.eyebrow}
                 </p>
               )}
-              <h1 className="text-4xl sm:text-5xl font-bold text-brand-navy leading-tight">
+              <h1 className="text-4xl sm:text-5xl font-bold text-brand-navy leading-tight text-balance">
                 {urgent ? urgent.headline : service.title}
               </h1>
-              <p className="text-lg text-slate-700 leading-relaxed">
+              <p className="text-lg text-slate-700 leading-relaxed max-w-prose">
                 {urgent ? urgent.intro : service.intro}
               </p>
               {urgent?.offer && (
-                <div className="rounded-2xl border border-brand-coral/30 bg-white p-5 shadow-sm">
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-coral">
-                    New patients
+                <div className="space-y-3 border-t border-slate-200 pt-5">
+                  <p className="text-5xl sm:text-6xl font-extrabold leading-none text-brand-navy">
+                    {urgent.offer.price}
                   </p>
-                  <p className="mt-1 text-2xl font-bold text-brand-navy sm:text-3xl">
-                    <span className="text-brand-coral">{urgent.offer.price}</span>{" "}
-                    {urgent.offer.title}
-                  </p>
-                  <p className="mt-2 text-base leading-relaxed text-slate-700">
-                    {urgent.offer.body}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    {urgent.offer.finePrint}
-                  </p>
+                  <p className="text-2xl font-bold text-brand-navy">{urgent.offer.title}</p>
+                  <p className="text-base leading-relaxed text-slate-700">{urgent.offer.body}</p>
+                  <p className="text-sm leading-relaxed text-slate-600">{urgent.offer.finePrint}</p>
                   <Link
                     href={urgent.offer.href}
-                    className="mt-3 inline-flex items-center text-sm font-semibold text-brand-coral hover:text-brand-coral-dark"
+                    className="inline-flex min-h-11 items-center text-sm font-semibold text-brand-navy underline-offset-2 hover:text-brand-coral hover:underline"
                   >
                     {urgent.offer.linkLabel}
                     <ArrowRight className="ml-1 h-4 w-4" />
                   </Link>
                 </div>
               )}
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row gap-3 pt-1">
                 <PhoneLink
                   className={
                     urgent
-                      ? "inline-flex h-14 items-center justify-center gap-2 rounded-full bg-brand-coral px-8 text-base font-bold text-white shadow-md hover:bg-brand-coral-dark"
-                      : "inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
+                      ? "inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy sm:w-auto"
+                      : "inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy"
                   }
                 >
-                  {urgent && <Phone className="h-5 w-5" aria-hidden="true" />}
+                  {urgent && <Phone className="h-4 w-4" aria-hidden="true" />}
                   Call <PhoneNumber />
                 </PhoneLink>
                 <a
@@ -172,19 +167,19 @@ export default async function ServicePage({
                   rel="noopener noreferrer"
                   className={
                     urgent
-                      ? "inline-flex h-14 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-base font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
-                      : "inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
+                      ? "inline-flex h-12 w-full items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy sm:w-auto"
+                      : "inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy"
                   }
                 >
                   {urgent ? "Book Online" : "Book Appointment"}
                 </a>
               </div>
               {urgent?.afterHours && (
-                <p className="text-sm leading-relaxed text-slate-600">{urgent.afterHours}</p>
+                <p className="max-w-prose text-sm leading-relaxed text-slate-600">{urgent.afterHours}</p>
               )}
             </div>
             {urgent ? (
-              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              <div className="grid gap-4">
                 {urgent.cards.map((card) => {
                   const CardIcon = URGENT_ICONS[card.iconKey] ?? PlusCircle;
                   return (

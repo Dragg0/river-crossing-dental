@@ -48,3 +48,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Impeccable engine binary, downloaded per machine. The skill and Cursor hook
+# stay in the repo. This cache is not part of the Next.js build.
+.cursor/skills/impeccable/scripts/bin/
+.impeccable/hook.cache.json
+.impeccable/hook.pending.json
+.impeccable/config.local.json

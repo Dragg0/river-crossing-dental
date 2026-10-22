@@ -83,14 +83,14 @@ export default function InvisalignPage() {
         </div>
       </section>
 
-      <section className="bg-brand-cream py-12 sm:py-16">
+      <section className="bg-brand-cream py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-10 items-center">
-            <div className="lg:col-span-3 space-y-5">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="order-2 space-y-5 lg:order-1">
               <p className="text-sm font-bold tracking-widest uppercase text-brand-coral">
                 Invisalign® in Riverton, UT
               </p>
-              <h1 className="text-4xl sm:text-5xl font-bold text-brand-navy leading-tight">
+              <h1 className="text-balance text-4xl font-bold leading-tight text-brand-navy sm:text-5xl">
                 Clear aligners for adults and teens.
               </h1>
               <p className="text-lg text-slate-700 leading-relaxed">
@@ -110,26 +110,26 @@ export default function InvisalignPage() {
                 Invisalign First. Each aligner is worn up to 22 hours a day and gradually shifts
                 your teeth. Treatment can be as short as six months.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <div className="flex flex-col gap-3 pt-2 sm:flex-row">
                 <a
                   href={siteConfig.booking}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md hover:bg-brand-coral-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy sm:w-auto"
                 >
                   Book a Free Consultation
                 </a>
-                <PhoneLink className="inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white">
+                <PhoneLink className="inline-flex h-12 w-full items-center justify-center rounded-full border-2 border-brand-navy px-8 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy sm:w-auto">
                   Call <PhoneNumber />
                 </PhoneLink>
               </div>
             </div>
-            <div className="lg:col-span-2 relative aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
+            <div className="relative order-1 aspect-[4/3] overflow-hidden rounded-3xl shadow-xl lg:order-2">
               <Image
                 src="/images/service/orthodontics.webp"
                 alt="Adult patient holding a clear aligner near her mouth and smiling"
                 fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
                 priority
               />
@@ -183,7 +183,7 @@ export default function InvisalignPage() {
           </p>
           <Link
             href="/specials/ortho-consult"
-            className="inline-flex items-center text-sm font-semibold text-brand-navy hover:text-brand-coral"
+            className="inline-flex min-h-11 items-center text-sm font-semibold text-brand-navy hover:text-brand-coral"
           >
             See what the free consult includes
             <ArrowRight className="ml-1 h-4 w-4" />
@@ -201,11 +201,11 @@ export default function InvisalignPage() {
               Cost, timing, and daily wear.
             </h2>
           </div>
-          <div className="space-y-4">
+          <div className="divide-y divide-slate-200 border-y border-slate-200">
             {faqs.map((item) => (
-              <div key={item.question} className="rounded-2xl bg-brand-cream p-6 space-y-2">
-                <h3 className="text-lg font-bold text-brand-navy">{item.question}</h3>
-                <p className="text-slate-700 leading-relaxed">{item.answer}</p>
+              <div key={item.question} className="space-y-2 py-6">
+                <h3 className="text-xl font-bold text-brand-navy">{item.question}</h3>
+                <p className="max-w-prose text-base leading-relaxed text-slate-700 sm:text-lg">{item.answer}</p>
               </div>
             ))}
           </div>
@@ -222,21 +222,25 @@ export default function InvisalignPage() {
         </div>
       </section>
 
-      <section className="bg-brand-cream py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <h2 className="text-2xl font-bold text-brand-navy mb-6">Related care</h2>
-          <div className="grid gap-4 sm:grid-cols-3">
+      <section className="bg-brand-cream py-16 sm:py-20">
+        <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h2 className="mb-2 text-2xl font-bold text-brand-navy">Related care</h2>
+          <ul className="divide-y divide-slate-200">
             {related.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-2xl bg-white p-6 shadow-sm hover:shadow-md"
-              >
-                <p className="font-bold text-brand-navy">{item.label}</p>
-                <p className="mt-2 text-sm text-slate-700 leading-relaxed">{item.body}</p>
-              </Link>
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="flex min-h-12 items-center justify-between gap-4 py-4 text-brand-navy hover:text-brand-coral"
+                >
+                  <span>
+                    <span className="block font-bold">{item.label}</span>
+                    <span className="mt-1 block text-sm leading-relaxed text-slate-600">{item.body}</span>
+                  </span>
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
