@@ -189,6 +189,25 @@ export default function InvisalignFirstPage() {
         </div>
       </section>
 
+      <section className="bg-white py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center space-y-3">
+          <h2 className="text-2xl font-bold text-brand-navy">
+            Looking for Invisalign for an older child or yourself?
+          </h2>
+          <p className="text-slate-700 leading-relaxed">
+            Invisalign First is for ages 6 through 10. Adults and teens can read about clear
+            aligners on our{" "}
+            <Link
+              href="/services/orthodontics/invisalign"
+              className="font-semibold text-brand-navy underline-offset-2 hover:text-brand-coral hover:underline"
+            >
+              Invisalign page
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
       <CtaBand
         heading="Wondering if early treatment makes sense for your child?"
         body="Bring them in for a complimentary consultation. We&rsquo;ll give you honest guidance, not a sales pitch."
