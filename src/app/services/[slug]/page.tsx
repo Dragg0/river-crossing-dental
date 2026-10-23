@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import {
   ArrowLeft,
   ArrowRight,
+  ChevronDown,
   Shield,
   Smile,
   PlusCircle,
@@ -12,6 +13,7 @@ import {
   Ambulance,
   type LucideIcon,
 } from "lucide-react";
+import type { ServiceSection } from "@/content/services";
 import type { Metadata } from "next";
 import { services } from "@/content/services";
 import { siteConfig } from "@/lib/site-config";
@@ -134,58 +136,43 @@ export default async function ServicePage({
         </section>
       )}
 
-      {/* Treatment sections */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-          <div className="space-y-12">
-            {service.sections.map((section, i) => (
-              <article
-                key={section.heading}
-                className="border-l-4 border-brand-steel-light pl-6 lg:pl-8"
-              >
-                <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy mb-4">
-                  {!service.unnumbered && (
-                    <span className="text-brand-coral font-mono text-base align-top mr-2">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  )}
-                  {section.heading}
-                </h2>
-                {section.body && (
-                  <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-4">
-                    {section.body}
-                  </p>
-                )}
-                {section.list && (
-                  <ItemList items={section.list} ordered={section.ordered} />
-                )}
-                {section.cta && (
-                  <Link
-                    href={section.cta.href}
-                    className="mt-4 inline-flex items-center text-sm font-semibold text-brand-coral hover:text-brand-coral-dark"
-                  >
-                    {section.cta.label}
-                    <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                )}
-              </article>
-            ))}
-          </div>
-
-          {service.closingHeading && (
-            <div className="mt-16 rounded-3xl bg-brand-cream p-8 lg:p-12 text-center space-y-3">
-              <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy">
-                {service.closingHeading}
-              </h2>
-              {service.closingBody && (
-                <p className="text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto">
-                  {service.closingBody}
-                </p>
-              )}
+      {urgent ? (
+        <EmergencyReference
+          sections={service.sections}
+          closingHeading={service.closingHeading}
+          closingBody={service.closingBody}
+        />
+      ) : (
+        <section className="bg-white py-16 sm:py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <div className="space-y-12">
+              {service.sections.map((section, i) => (
+                <article
+                  key={section.heading}
+                  className="border-l-4 border-brand-steel-light pl-6 lg:pl-8"
+                >
+                  <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy mb-4">
+                    {!service.unnumbered && (
+                      <span className="text-brand-coral font-mono text-base align-top mr-2">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    )}
+                    {section.heading}
+                  </h2>
+                  <SectionBody section={section} />
+                </article>
+              ))}
             </div>
-          )}
-        </div>
-      </section>
+
+            {service.closingHeading && (
+              <ClosingNote
+                heading={service.closingHeading}
+                body={service.closingBody}
+              />
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Related services nudge */}
       <section className="bg-brand-cream py-16">
@@ -231,6 +218,130 @@ export default async function ServicePage({
   );
 }
 
+function EmergencyReference({
+  sections,
+  closingHeading,
+  closingBody,
+}: {
+  sections: ServiceSection[];
+  closingHeading?: string;
+  closingBody?: string;
+}) {
+  const tips = sections.find((section) => section.heading.includes("Quick Tips"));
+  const rest = sections.filter((section) => section !== tips);
+
+  return (
+    <section className="bg-white py-12 sm:py-16">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {tips && (
+          <div>
+            <h2 className="text-2xl font-bold text-brand-navy sm:text-3xl">
+              {tips.heading}
+            </h2>
+            {tips.list && (
+              <ul className="mt-6 grid gap-x-10 gap-y-5 sm:grid-cols-2">
+                {tips.list.map((item) => {
+                  if (typeof item === "string") {
+                    return (
+                      <li key={item} className="flex gap-3 text-slate-700">
+                        <ListMark />
+                        <span className="leading-relaxed">{item}</span>
+                      </li>
+                    );
+                  }
+                  return (
+                    <li key={item.label} className="flex gap-3">
+                      <ListMark />
+                      <p className="leading-relaxed text-slate-700">
+                        <span className="font-bold text-brand-navy">{item.label}</span>{" "}
+                        {item.description}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+        )}
+
+        {rest.length > 0 && (
+          <div className={tips ? "mt-14" : ""}>
+            <h2 className="text-2xl font-bold text-brand-navy sm:text-3xl">
+              More about emergency visits
+            </h2>
+            <div className="mt-4 divide-y divide-slate-200 border-y border-slate-200">
+              {rest.map((section) => (
+                <details key={section.heading} className="group py-4">
+                  <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold text-brand-navy [&::-webkit-details-marker]:hidden">
+                    {section.heading}
+                    <ChevronDown
+                      className="h-5 w-5 shrink-0 transition-transform group-open:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </summary>
+                  <div className="max-w-3xl pb-2 pt-3">
+                    <SectionBody section={section} />
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {closingHeading && (
+          <ClosingNote heading={closingHeading} body={closingBody} />
+        )}
+      </div>
+    </section>
+  );
+}
+
+function SectionBody({ section }: { section: ServiceSection }) {
+  return (
+    <>
+      {section.body && (
+        <p className="mb-4 text-base leading-relaxed text-slate-700 sm:text-lg">
+          {section.body}
+        </p>
+      )}
+      {section.list && <ItemList items={section.list} ordered={section.ordered} />}
+      {section.cta && (
+        <Link
+          href={section.cta.href}
+          className="mt-4 inline-flex items-center text-sm font-semibold text-brand-coral hover:text-brand-coral-dark"
+        >
+          {section.cta.label}
+          <ArrowRight className="ml-1 h-4 w-4" />
+        </Link>
+      )}
+    </>
+  );
+}
+
+function ClosingNote({ heading, body }: { heading: string; body?: string }) {
+  return (
+    <div className="mt-14 space-y-3 rounded-3xl bg-brand-cream p-8 text-center lg:p-12">
+      <h2 className="text-2xl font-bold text-brand-navy sm:text-3xl">{heading}</h2>
+      {body && (
+        <p className="mx-auto max-w-2xl text-lg leading-relaxed text-slate-700">{body}</p>
+      )}
+    </div>
+  );
+}
+
+function ListMark() {
+  return (
+    <span
+      className="mt-[0.55em] h-2 w-2 shrink-0 rounded-full bg-brand-coral"
+      aria-hidden="true"
+    />
+  );
+}
+
+function withSeparator(label: string) {
+  return /[?!.:]$/.test(label) ? label : `${label}:`;
+}
+
 function ItemList({
   items,
   ordered,
@@ -256,10 +367,8 @@ function ItemList({
                 ordered ? "leading-relaxed" : "flex gap-2 leading-relaxed"
               }
             >
-              {!ordered && (
-                <span className="text-brand-coral mt-1.5 flex-shrink-0">•</span>
-              )}
-              <span>{item}</span>
+            {!ordered && <ListMark />}
+            <span>{item}</span>
             </li>
           );
         }
@@ -270,11 +379,9 @@ function ItemList({
               ordered ? "leading-relaxed" : "flex gap-2 leading-relaxed"
             }
           >
-            {!ordered && (
-              <span className="text-brand-coral mt-1.5 flex-shrink-0">•</span>
-            )}
+            {!ordered && <ListMark />}
             <span>
-              <span className="font-bold text-brand-navy">{item.label}:</span>{" "}
+              <span className="font-bold text-brand-navy">{withSeparator(item.label)}</span>{" "}
               {item.description}
             </span>
           </li>

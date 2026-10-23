@@ -273,17 +273,15 @@ export default function InvisalignPage() {
               </Link>
             ))}
           </div>
-          <div className="mt-12 grid gap-6 border-t border-slate-200 pt-8 lg:grid-cols-[1fr_1.3fr]">
-            <div>
-              <h2 className="text-2xl font-bold text-brand-navy">
-                Invisalign or braces?
-              </h2>
-              <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-600">
-                The best choice depends on your bite and goals. We will discuss
-                both at your consultation.
-              </p>
-            </div>
-            <div className="overflow-x-auto">
+          <div className="mt-12 border-t border-slate-200 pt-8">
+            <h2 className="text-2xl font-bold text-brand-navy">
+              Invisalign or braces?
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
+              The best choice depends on your bite and goals. We will discuss
+              both at your consultation.
+            </p>
+            <div className="mt-6 overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <caption className="sr-only">
                   Compare clear aligners and traditional braces

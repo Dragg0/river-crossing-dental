@@ -107,7 +107,7 @@ export default function ReviewsPage() {
               Selected reviews from Google and Yelp
             </p>
           </div>
-          <div className="columns-1 gap-5 md:columns-2">
+          <div className="columns-1 gap-5 md:columns-2 md:[column-fill:balance]">
             {reviews.map((r, i) => (
               <figure
                 key={i}

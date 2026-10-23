@@ -124,19 +124,19 @@ export function CallMeasurement({ children }: { children: ReactNode }) {
       </div>
       {(choice === null || preferencesOpen) && (
         <section aria-label="Ad measurement preferences"
-          className="fixed inset-x-0 bottom-0 z-50 max-h-[45vh] overflow-y-auto border-t border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-700 shadow-lg">
-          <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:flex-row sm:items-center">
-            <p className="flex-1">
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-slate-50 px-3 py-2 text-xs leading-snug text-slate-700 shadow-lg sm:px-4 sm:py-4 sm:text-sm sm:leading-normal">
+          <div className="mx-auto flex max-w-5xl flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <p className="min-w-0 flex-1">
               May we use Google measurement cookies to understand which ads lead to calls?
               If you allow this, Google may display a forwarding number that connects to our office
               and measure call details such as time and duration. You can call and book either way.{" "}
               <a href="/privacy-policy" className="font-semibold underline">Privacy details</a>
             </p>
-            <div className="flex shrink-0 flex-wrap gap-2">
+            <div className="flex shrink-0 gap-2">
               <button type="button" onClick={() => updateChoice("declined")}
-                className="min-h-11 rounded-lg border border-slate-400 px-4 py-2 font-semibold">Decline</button>
+                className="min-h-9 flex-1 rounded-lg border border-slate-400 px-3 py-1.5 text-xs font-semibold sm:min-h-11 sm:flex-none sm:px-4 sm:py-2 sm:text-sm">Decline</button>
               <button type="button" onClick={() => updateChoice("allowed")}
-                className="min-h-11 rounded-lg bg-brand-navy px-4 py-2 font-semibold text-white">Allow measurement</button>
+                className="min-h-9 flex-1 rounded-lg bg-brand-navy px-3 py-1.5 text-xs font-semibold text-white sm:min-h-11 sm:flex-none sm:px-4 sm:py-2 sm:text-sm">Allow measurement</button>
             </div>
           </div>
         </section>
