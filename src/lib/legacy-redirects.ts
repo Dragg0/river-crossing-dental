@@ -35,20 +35,19 @@ const LEGACY_ROWS = [
   ["/when-to-see-your-emergency-dentist-in-riverton", "/services/emergency-dentistry"],
 
   // Invisalign and orthodontics.
-  // Adult clear aligners are a section on the orthodontics page. There is
-  // no /services/orthodontics/invisalign route. Invisalign First and Teen
-  // do have their own pages.
-  ["/invisalign-riverton-clear-aligners-river-crossing-dental", "/services/orthodontics"],
-  ["/invisalign", "/services/orthodontics"],
+  // Adult and teen clear aligners live at /services/orthodontics/invisalign.
+  // Invisalign First and Teen keep their own pages.
+  ["/invisalign-riverton-clear-aligners-river-crossing-dental", "/services/orthodontics/invisalign"],
+  ["/invisalign", "/services/orthodontics/invisalign"],
   ["/invisalign-for-children", "/services/orthodontics/invisalign-first"],
   ["/invisalign-for-teen", "/services/orthodontics/invisalign-teen"],
   ["/airway-orthodontics", "/services/orthodontics"],
   ["/other-orthodontic-treatments", "/services/orthodontics"],
   ["/orthodontics", "/services/orthodontics"],
   ["/healthy-start", "/services/orthodontics"],
-  ["/answering-invisalign-questions", "/services/orthodontics"],
-  ["/invisalign-am-i-good-candidate", "/services/orthodontics"],
-  ["/tips-invisalign-riverton-patients", "/services/orthodontics"],
+  ["/answering-invisalign-questions", "/services/orthodontics/invisalign"],
+  ["/invisalign-am-i-good-candidate", "/services/orthodontics/invisalign"],
+  ["/tips-invisalign-riverton-patients", "/services/orthodontics/invisalign"],
   ["/top-5-benefits-riverton-orthodontics", "/services/orthodontics"],
   [
     "/your-first-orthodontic-visit-at-river-crossing-family-dental-orthodontics",
@@ -164,6 +163,7 @@ const LIVE_PATHS = new Set<string>([
   "/website-accessibility",
   "/sitemap.xml",
   "/services/cosmetic-dentistry/icon",
+  "/services/orthodontics/invisalign",
   "/services/orthodontics/invisalign-teen",
   "/services/orthodontics/invisalign-first",
   ...services.map((service) => `/services/${service.slug}`),

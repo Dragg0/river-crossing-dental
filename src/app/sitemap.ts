@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const subServicePages: MetadataRoute.Sitemap = [
     { url: `${BASE}/services/cosmetic-dentistry/icon`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/services/orthodontics/invisalign`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/services/orthodontics/invisalign-teen`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/services/orthodontics/invisalign-first`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
   ];

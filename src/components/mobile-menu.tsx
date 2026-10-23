@@ -28,7 +28,7 @@ export function MobileMenu() {
   }, [open]);
 
   const overlay = (
-    <div className="md:hidden" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <div className="xl:hidden" role="dialog" aria-modal="true" aria-label="Site navigation">
       {/* Backdrop (click-to-close, dark scrim) */}
       <button
         type="button"
@@ -147,7 +147,7 @@ export function MobileMenu() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full text-brand-navy hover:bg-slate-100"
+        className="xl:hidden inline-flex h-10 w-10 items-center justify-center rounded-full text-brand-navy hover:bg-slate-100"
         aria-label="Open menu"
         aria-expanded={open}
       >

@@ -28,6 +28,23 @@ export type UrgentHero = {
   intro: string;
   cards: { iconKey: string; label: string; description: string }[];
   steps: { iconKey: string; label: string; description: string }[];
+  /** Shown above the call and book buttons when the visit has a posted offer. */
+  offer?: {
+    price: string;
+    title: string;
+    body: string;
+    finePrint: string;
+    href: string;
+    linkLabel: string;
+  };
+  /** Existing after-hours scheduling note. Omit when the site has no such service. */
+  afterHours?: string;
+  emergencyNote?: string;
+  /** Illustrated treatment cards shown below the steps. Treatment is never part of the posted offer. */
+  treatments?: { image: string; label: string; description: string }[];
+  treatmentsNote?: string;
+  /** Author of an existing published review (see content/reviews.ts) to feature beside the treatments. */
+  testimonialAuthor?: string;
 };
 
 export type Service = {
@@ -269,6 +286,10 @@ export const services: Service[] = [
       {
         heading: "Invisalign®",
         body: "Translucent, smooth, durable aligners that handle underbite, overbite, gaps, and crowding. Treatment can be as short as six months; aligners are worn up to 22 hours a day, removed only for eating and cleaning. Each aligner gradually shifts your teeth toward alignment. Dr. Peterson is a certified Invisalign provider, including for Invisalign Teen and Invisalign First.",
+        cta: {
+          label: "Invisalign for adults and teens",
+          href: "/services/orthodontics/invisalign",
+        },
       },
       {
         heading: "Traditional Braces",
@@ -293,10 +314,10 @@ export const services: Service[] = [
     iconImageAlt: "Tooth with pain indicator",
     unnumbered: true,
     urgentHero: {
-      eyebrow: "Same-day emergency dental care",
-      headline: "Tooth pain, swelling, or a broken tooth?",
+      eyebrow: "Emergency dental care in Riverton",
+      headline: "Emergency Exam & X-Ray",
       intro:
-        "Call River Crossing Family Dental in Riverton. We'll help you get comfortable, understand what's happening, and find the fastest path to treatment.",
+        "Tooth pain, swelling, or a broken tooth? We'll help you take the next step, with same-day visits whenever possible.",
       cards: [
         {
           iconKey: "alert-circle",
@@ -317,20 +338,58 @@ export const services: Service[] = [
       steps: [
         {
           iconKey: "phone-call",
-          label: "Call first",
-          description: "Our front office will help you decide how quickly you should be seen.",
+          label: "Call or book",
+          description: "Tell us what is happening. We save room for same-day visits whenever possible.",
         },
         {
           iconKey: "calendar-clock",
-          label: "Same-day openings",
-          description: "We keep room in the daily schedule for urgent visits.",
+          label: "An exam & X-ray",
+          description: "For new patients, the $49 visit helps us understand the problem. Treatment is separate.",
         },
         {
           iconKey: "shield",
-          label: "Comfort-focused care",
-          description: "We help you get comfortable, explain options clearly, and treat what we can.",
+          label: "A clear treatment plan",
+          description: "We explain your options and the cost before any treatment begins.",
         },
       ],
+      offer: {
+        price: "$49",
+        title: "Emergency exam & X-ray",
+        body: "New patients can come in for a problem-focused exam and the X-ray we need to see what's going on. We save room for same-day visits whenever possible.",
+        finePrint:
+          "New patients only. Fillings, crowns, root canals, and extractions are not included. We'll explain the plan and the cost before any treatment.",
+        href: "/specials/exam",
+        linkLabel: "See what the $49 includes",
+      },
+      afterHours:
+        "Calling after hours? Eve, our AI receptionist, can help new patients schedule — nights and weekends included. Appointments are during Monday–Thursday office hours.",
+      emergencyNote:
+        "Trouble breathing or swallowing, or swelling around your eye or neck, needs emergency medical care. Call 911 if you are having difficulty breathing.",
+      treatments: [
+        {
+          image: "/images/service/icons/toothache.png",
+          label: "Toothache relief",
+          description: "We find what is causing the pain and help you get comfortable, beginning care the same day whenever possible.",
+        },
+        {
+          image: "/images/service/icons/dental-care-3.png",
+          label: "Broken tooth repair",
+          description: "A filling or crown can repair a chipped or broken tooth and protect it from further damage.",
+        },
+        {
+          image: "/images/service/icons/root-canal.png",
+          label: "Root canal therapy",
+          description: "When infection reaches the inside of a tooth, a root canal can relieve the pain and help save it.",
+        },
+        {
+          image: "/images/service/icons/tooth-extraction.png",
+          label: "Tooth extractions",
+          description: "If a tooth can't be saved, we explain why and plan the next step with you.",
+        },
+      ],
+      treatmentsNote:
+        "Treatment is separate from the $49 exam and X-ray. We explain your options and the cost before we begin.",
+      testimonialAuthor: "Tammy P.",
     },
     intro:
       "Dental emergencies are never planned, but when they happen, you need fast, reliable care from a team you can trust. At River Crossing Family Dental in Riverton, UT, we offer compassionate and efficient emergency dentistry services to help relieve your pain, protect your oral health, and restore your smile as quickly as possible. Whether you're experiencing a sudden toothache, have suffered a dental injury, or need same-day treatment, our experienced team is here to help.",
