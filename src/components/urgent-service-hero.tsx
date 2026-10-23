@@ -9,6 +9,7 @@ import {
   Star,
 } from "lucide-react";
 import type { UrgentHero } from "@/content/services";
+import { reviews } from "@/content/reviews";
 import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import { siteConfig } from "@/lib/site-config";
 
@@ -19,6 +20,7 @@ const symptomIcons = {
 };
 
 export function UrgentServiceHero({ hero }: { hero: UrgentHero }) {
+  const testimonial = reviews.find((r) => r.author === hero.testimonialAuthor);
   return (
     <>
       <section className="relative overflow-hidden bg-brand-cream">
@@ -133,6 +135,84 @@ export function UrgentServiceHero({ hero }: { hero: UrgentHero }) {
           )}
         </div>
       </section>
+      {hero.treatments && (
+        <section className="bg-brand-cream">
+          <div className="container mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+            <p className="text-sm font-bold uppercase text-brand-coral">
+              How we can help
+            </p>
+            <h2 className="mt-2 text-2xl font-bold text-brand-navy sm:text-3xl">
+              Care for the emergencies we see most.
+            </h2>
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {hero.treatments.map((item) => (
+                <li
+                  key={item.label}
+                  className="flex items-start gap-4 rounded-lg bg-white p-5 sm:flex-col sm:gap-0 sm:p-6"
+                >
+                  <Image
+                    src={item.image}
+                    alt=""
+                    width={96}
+                    height={96}
+                    className="h-16 w-16 shrink-0 object-contain sm:h-20 sm:w-20"
+                  />
+                  <div>
+                    <h3 className="text-lg font-bold text-brand-navy sm:mt-4">
+                      {item.label}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                      {item.description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            {hero.treatmentsNote && (
+              <p className="mt-6 text-sm leading-relaxed text-slate-700">
+                {hero.treatmentsNote}{" "}
+                <Link
+                  href="/financing-insurance"
+                  className="font-semibold text-brand-navy underline underline-offset-4 hover:text-brand-coral"
+                >
+                  Financing &amp; insurance
+                </Link>
+              </p>
+            )}
+            {testimonial && (
+              <figure className="mt-10 max-w-3xl">
+                <div
+                  className="flex gap-1 text-amber-400"
+                  aria-label="5 out of 5 stars"
+                >
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-current"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                <blockquote className="mt-3 text-lg leading-relaxed text-brand-navy sm:text-xl">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-3 text-sm text-slate-600">
+                  <span className="font-bold text-brand-navy">
+                    {testimonial.author}
+                  </span>{" "}
+                  · {testimonial.source} review ·{" "}
+                  <Link
+                    href="/reviews"
+                    className="font-semibold text-brand-navy underline underline-offset-4 hover:text-brand-coral"
+                  >
+                    More patient reviews
+                  </Link>
+                </figcaption>
+              </figure>
+            )}
+          </div>
+        </section>
+      )}
     </>
   );
 }

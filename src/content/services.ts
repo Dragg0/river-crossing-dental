@@ -40,6 +40,11 @@ export type UrgentHero = {
   /** Existing after-hours scheduling note. Omit when the site has no such service. */
   afterHours?: string;
   emergencyNote?: string;
+  /** Illustrated treatment cards shown below the steps. Treatment is never part of the posted offer. */
+  treatments?: { image: string; label: string; description: string }[];
+  treatmentsNote?: string;
+  /** Author of an existing published review (see content/reviews.ts) to feature beside the treatments. */
+  testimonialAuthor?: string;
 };
 
 export type Service = {
@@ -360,6 +365,31 @@ export const services: Service[] = [
         "Calling after hours? Eve, our AI receptionist, can help new patients schedule — nights and weekends included. Appointments are during Monday–Thursday office hours.",
       emergencyNote:
         "Trouble breathing or swallowing, or swelling around your eye or neck, needs emergency medical care. Call 911 if you are having difficulty breathing.",
+      treatments: [
+        {
+          image: "/images/service/icons/toothache.png",
+          label: "Toothache relief",
+          description: "We find what is causing the pain and help you get comfortable, beginning care the same day whenever possible.",
+        },
+        {
+          image: "/images/service/icons/dental-care-3.png",
+          label: "Broken tooth repair",
+          description: "A filling or crown can repair a chipped or broken tooth and protect it from further damage.",
+        },
+        {
+          image: "/images/service/icons/root-canal.png",
+          label: "Root canal therapy",
+          description: "When infection reaches the inside of a tooth, a root canal can relieve the pain and help save it.",
+        },
+        {
+          image: "/images/service/icons/tooth-extraction.png",
+          label: "Tooth extractions",
+          description: "If a tooth can't be saved, we explain why and plan the next step with you.",
+        },
+      ],
+      treatmentsNote:
+        "Treatment is separate from the $49 exam and X-ray. We explain your options and the cost before we begin.",
+      testimonialAuthor: "Rebecca S.",
     },
     intro:
       "Dental emergencies are never planned, but when they happen, you need fast, reliable care from a team you can trust. At River Crossing Family Dental in Riverton, UT, we offer compassionate and efficient emergency dentistry services to help relieve your pain, protect your oral health, and restore your smile as quickly as possible. Whether you're experiencing a sudden toothache, have suffered a dental injury, or need same-day treatment, our experienced team is here to help.",

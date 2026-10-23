@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Star } from "lucide-react";
 import { reviews } from "@/content/reviews";
 import { siteConfig } from "@/lib/site-config";
@@ -139,11 +140,25 @@ export default function ReviewsPage() {
             ))}
           </div>
 
-          <div className="mt-12 flex flex-col items-center gap-3 text-center">
-            <h2 className="text-2xl font-bold text-brand-navy">
+        </div>
+      </section>
+
+      <section className="bg-brand-cream">
+        <div className="container mx-auto grid max-w-6xl items-center gap-8 px-4 py-12 sm:px-6 sm:py-16 md:grid-cols-2 lg:gap-14 lg:px-8">
+          <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
+            <Image
+              src="/images/reviews/family-park.webp"
+              alt="A family laughing together on a blanket in a sunny park"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="flex flex-col items-center gap-3 text-center md:items-start md:text-left">
+            <h2 className="text-2xl font-bold text-brand-navy sm:text-3xl">
               Been in to see us?
             </h2>
-            <p className="mb-2 text-sm text-slate-600">
+            <p className="mb-2 text-base text-slate-700">
               Your feedback helps other patients get to know our practice.
             </p>
             <a
