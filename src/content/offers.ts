@@ -12,6 +12,7 @@ export type Offer = {
   finePrint: string;
   image: string;
   imageAlt: string;
+  imagePosition?: string;
   intro: string;
   detailsEyebrow: string;
   detailsHeading: string;
@@ -69,8 +70,8 @@ export const offers: Offer[] = [
     description:
       "Dental emergencies are stressful enough without worrying about the cost. Get the urgent care you need right away.",
     finePrint: "New patients only.",
-    image: "/images/specials/exam-xray.webp",
-    imageAlt: "Dentist reviewing a dental X-ray on a monitor",
+    image: "/images/meet-the-team/family-warmth.webp",
+    imageAlt: "Parents and their daughter smiling together outdoors",
     intro:
       "Are you experiencing a dental emergency? Our experienced team provides the care you need, when you need it. We reserve time in our daily schedule so we can see urgent patients the same day whenever possible.",
     detailsEyebrow: "What the $49 covers",
@@ -103,8 +104,9 @@ export const offers: Offer[] = [
     description:
       "Curious about Invisalign or other orthodontic options? Come in for a no-cost consultation and find out what treatment could do for your smile.",
     finePrint: "New patients only.",
-    image: "/images/specials/ortho-consult-aligners.webp",
-    imageAlt: "Two clear orthodontic aligners held to form a heart shape",
+    image: "/images/service/orthodontics.webp",
+    imageAlt: "Smiling adult holding a clear orthodontic aligner",
+    imagePosition: "right center",
     intro:
       "Searching for top-quality orthodontic care for your family in Riverton, UT? River Crossing Family Dental offers a variety of orthodontic options so patients can decide what's best for them. Our free consultation lets us learn about the patient's needs and determine the perfect treatment.",
     detailsEyebrow: "What the consultation includes",

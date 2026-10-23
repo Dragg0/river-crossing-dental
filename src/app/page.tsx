@@ -222,6 +222,7 @@ export default function Home() {
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    style={{ objectPosition: offer.imagePosition }}
                   />
                 </div>
                 <div className="flex flex-col flex-1 p-6 space-y-3">

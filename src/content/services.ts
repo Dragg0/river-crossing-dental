@@ -309,10 +309,10 @@ export const services: Service[] = [
     iconImageAlt: "Tooth with pain indicator",
     unnumbered: true,
     urgentHero: {
-      eyebrow: "Emergency dentist in Riverton, Utah",
-      headline: "Tooth pain? Let's take care of you.",
+      eyebrow: "Emergency dental care in Riverton",
+      headline: "Emergency Exam & X-Ray",
       intro:
-        "A toothache or broken tooth can't wait. Call us for help finding the next available visit, with same-day care whenever possible.",
+        "Tooth pain, swelling, or a broken tooth? We'll help you take the next step, with same-day visits whenever possible.",
       cards: [
         {
           iconKey: "alert-circle",

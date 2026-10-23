@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   AlertCircle,
   ArrowRight,
@@ -20,61 +21,35 @@ const symptomIcons = {
 export function UrgentServiceHero({ hero }: { hero: UrgentHero }) {
   return (
     <>
-      <section className="bg-brand-cream">
-        <div className="container mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
-            <div>
-              <p className="mb-3 text-sm font-bold uppercase text-brand-coral">
-                {hero.eyebrow}
-              </p>
-              <h1 className="max-w-2xl text-3xl font-bold leading-tight text-brand-navy sm:text-5xl">
-                {hero.headline}
-              </h1>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                {hero.intro}
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <PhoneLink className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand-coral px-7 text-sm font-bold text-white hover:bg-brand-coral-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy">
-                  <Phone className="h-4 w-4" aria-hidden="true" />
-                  Call <PhoneNumber />
-                </PhoneLink>
-                <a
-                  href={siteConfig.booking}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-7 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white"
-                >
-                  Book Online
-                </a>
-              </div>
+      <section className="relative overflow-hidden bg-brand-cream">
+        <div className="relative aspect-[16/9] md:absolute md:inset-0 md:aspect-auto">
+          <Image src="/images/meet-the-team/family-warmth.webp" alt="Parents and their daughter smiling together outdoors" fill priority sizes="100vw" className="object-cover object-[center_35%]" />
+          <div className="absolute inset-0 hidden bg-linear-to-r from-brand-navy-dark/95 via-brand-navy-dark/80 to-brand-navy-dark/5 md:block" />
+        </div>
+        <div className="container relative mx-auto px-4 py-7 sm:px-6 md:py-14 lg:px-8 lg:py-16">
+          <div className="max-w-xl">
+            <p className="text-sm font-bold uppercase text-brand-navy md:text-white/85">{hero.eyebrow}</p>
+            <div className="mt-4 flex items-center gap-4 sm:gap-6">
+              <p className="shrink-0 text-6xl font-extrabold leading-none text-brand-navy sm:text-7xl md:text-white">{hero.offer?.price}</p>
+              <h1 className="text-balance text-2xl font-bold leading-tight text-brand-navy sm:text-4xl md:text-white">{hero.headline}</h1>
             </div>
-            {hero.offer && (
-              <div className="border-t border-brand-steel-light pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-                <p className="text-sm font-bold uppercase text-brand-coral">
-                  New patient special
-                </p>
-                <div className="mt-3 flex items-center gap-5">
-                  <p className="shrink-0 text-6xl font-extrabold leading-none text-brand-navy sm:text-7xl">
-                    {hero.offer.price}
-                  </p>
-                  <p className="max-w-48 text-xl font-bold leading-snug text-brand-navy">
-                    {hero.offer.title}
-                  </p>
-                </div>
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-700">
-                  {hero.offer.finePrint}
-                </p>
-                <Link
-                  href={hero.offer.href}
-                  className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-navy underline underline-offset-4 hover:text-brand-coral"
-                >
-                  See offer details
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            )}
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-700 md:text-lg md:text-white">{hero.intro}</p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <PhoneLink className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand-coral px-7 text-sm font-bold text-white hover:bg-brand-coral-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-steel-light">
+                <Phone className="h-4 w-4" aria-hidden="true" />Call <PhoneNumber />
+              </PhoneLink>
+              <a href={siteConfig.booking} target="_blank" rel="noopener noreferrer" className="inline-flex h-12 items-center justify-center rounded-full border-2 border-brand-navy px-7 text-sm font-semibold text-brand-navy hover:bg-brand-navy hover:text-white md:border-white/70 md:text-white md:hover:bg-white/10">Book Online</a>
+            </div>
+            {hero.offer && <div className="mt-5 max-w-lg text-sm leading-relaxed text-slate-600 md:text-white/90">
+              <p>{hero.offer.finePrint}</p>
+              <Link href={hero.offer.href} className="mt-2 inline-flex min-h-11 items-center gap-2 font-semibold underline underline-offset-4 hover:text-brand-coral md:hover:text-white">See offer details<ArrowRight className="h-4 w-4" /></Link>
+            </div>}
           </div>
-          <div className="mt-8 grid gap-3 md:grid-cols-3">
+        </div>
+      </section>
+      <section className="bg-brand-cream">
+        <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          <div className="grid gap-3 md:grid-cols-3">
             {hero.cards.map((card) => {
               const Icon =
                 symptomIcons[card.iconKey as keyof typeof symptomIcons] ??

@@ -170,13 +170,13 @@ export default function InvisalignPage() {
                 </PhoneLink>
               </div>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
               <Image
                 src="/images/service/orthodontics.webp"
                 alt="Adult patient holding a clear aligner near her mouth and smiling"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+                className="object-cover object-right"
                 priority
               />
             </div>
