@@ -32,7 +32,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Primary">
+        <nav className="hidden xl:flex items-center gap-1 lg:gap-2" aria-label="Primary">
           {nav.map((item) => (
             <div key={item.label} className="relative group">
               <Link
@@ -63,7 +63,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2 lg:gap-4">
           <PhoneLink
-            className="hidden lg:inline-flex items-center gap-2 text-sm font-semibold text-brand-navy hover:text-brand-coral"
+            className="hidden xl:inline-flex items-center gap-2 text-sm font-semibold text-brand-navy hover:text-brand-coral"
           >
             <Phone className="h-4 w-4" />
             <PhoneNumber />
