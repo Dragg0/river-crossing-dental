@@ -4,17 +4,17 @@ Source: live rivercrossingdental.com (extracted June 2026). Injected gambling sp
 
 > **Phone (resolved):** Use **801-254-8812**. The live site's main display number and the Yelp listing (updated Dec 2025) both use 801-254-8812. The 801-509-9937 that appears on some buttons and on the current Vercel draft is a secondary/old number — replace it with 801-254-8812 site-wide for consistency (this also helps GBP/local-search NAP consistency).
 >
-> **Hours (confirmed via Yelp, Dec 2025):** Mon 8:00–5:00 · Tue 8:00–4:00 · Wed 7:00–5:00 · Thu 8:00–4:00 · **Fri/Sat/Sun Closed**. Confirm these are still accurate before publishing.
+> **Hours (confirmed by Dr. Peterson):** Mon 8:00–5:00 · Tue 8:00–4:00 · Wed 8:00–5:00 · Thu 8:00–4:00 · **Fri/Sat/Sun Closed**.
 
 ---
 
 ## Business Info (NAP)
 
 - **Name:** River Crossing Family Dental & Orthodontics
-- **Address:** 4121 13400 S Unit A, Riverton, UT 84096
+- **Address:** 4121 W 13400 S Unit A, Riverton, UT 84096
 - **Phone:** 801-254-8812 *(confirmed — use this everywhere)*
 - **Booking:** https://book.modento.io/river-crossing-dental
-- **Hours:** Mon 8:00–5:00 · Tue 8:00–4:00 · Wed 7:00–5:00 · Thu 8:00–4:00 · Fri/Sat/Sun Closed
+- **Hours:** Mon 8:00–5:00 · Tue 8:00–4:00 · Wed 8:00–5:00 · Thu 8:00–4:00 · Fri/Sat/Sun Closed
 - **Social:** Facebook, Instagram, YouTube, Google, Yelp (links in footer of live site)
 - **Related:** West Mountain Dental Assisting School — wmdentalassisting.com
 
@@ -415,8 +415,8 @@ The live site is currently publishing injected casino/gambling spam posts (autho
 
 - **Call Us:** 801-254-8812
 - **Book An Appointment:** https://book.modento.io/river-crossing-dental
-- **Visit Us:** 4121 13400 S Unit A, Riverton, UT 84096
-- **Hours:** Mon 8–5 · Tue 8–4 · Wed 7–5 · Thu 8–4 · Fri/Sat/Sun Closed
+- **Visit Us:** 4121 W 13400 S Unit A, Riverton, UT 84096
+- **Hours:** Mon 8–5 · Tue 8–4 · Wed 8–5 · Thu 8–4 · Fri/Sat/Sun Closed
 
 ---
 
