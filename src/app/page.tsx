@@ -21,6 +21,11 @@ import { siteConfig } from "@/lib/site-config";
 import { CtaBand } from "@/components/cta-band";
 import { MeetEve } from "@/components/meet-eve";
 
+function compactHour(display: string) {
+  const match = /^(\d+):00 AM – (\d+):00 PM$/.exec(display);
+  return match ? `${match[1]}–${match[2]}` : display;
+}
+
 const SERVICE_ICONS: Record<string, LucideIcon> = {
   shield: Shield,
   smile: Smile,
@@ -329,12 +334,15 @@ export default function Home() {
                   <div className="text-sm text-slate-600 space-y-1">
                     <p>
                       <span className="font-semibold text-brand-navy">Mon</span>{" "}
-                      8:00 AM – 5:00 PM ·{" "}
-                      <span className="font-semibold text-brand-navy">Tue</span> 8–4
+                      {compactHour(siteConfig.hours[0].display)} ·{" "}
+                      <span className="font-semibold text-brand-navy">Tue</span>{" "}
+                      {compactHour(siteConfig.hours[1].display)}
                     </p>
                     <p>
-                      <span className="font-semibold text-brand-navy">Wed</span> 7–5 ·{" "}
-                      <span className="font-semibold text-brand-navy">Thu</span> 8–4
+                      <span className="font-semibold text-brand-navy">Wed</span>{" "}
+                      {compactHour(siteConfig.hours[2].display)} ·{" "}
+                      <span className="font-semibold text-brand-navy">Thu</span>{" "}
+                      {compactHour(siteConfig.hours[3].display)}
                     </p>
                     <p>
                       <span className="font-semibold text-brand-navy">Fri/Sat/Sun</span> Closed

@@ -7,11 +7,11 @@ export const siteConfig = {
   url: "https://www.rivercrossingdental.com",
 
   address: {
-    street: "4121 13400 S Unit A",
+    street: "4121 W 13400 S Unit A",
     city: "Riverton",
     state: "UT",
     zip: "84096",
-    full: "4121 13400 S Unit A, Riverton, UT 84096",
+    full: "4121 W 13400 S Unit A, Riverton, UT 84096",
   },
 
   geo: {
@@ -28,7 +28,7 @@ export const siteConfig = {
 
   // Place ID confirmed from this site's Google Maps embed
   // (feature 0x875285b28bbe5f9b:0x41f4ade821c0c5ad): River Crossing
-  // Family Dental, 4121 13400 S Unit A, Riverton, UT 84096,
+  // Family Dental, 4121 W 13400 S Unit A, Riverton, UT 84096,
   // (801) 254-8812, rated 4.7 from 345 reviews.
   googleReviewUrl:
     "https://search.google.com/local/writereview?placeid=ChIJm1--i7KFUocRrcXAIeit9EE",
@@ -54,7 +54,7 @@ export const siteConfig = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3033.5566454199684!2d-111.99117968460132!3d40.507185979354674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x875285b28bbe5f9b%3A0x41f4ade821c0c5ad!2sRiver%20Crossing%20Dental!5e0!3m2!1sen!2sus!4v1635275938400!5m2!1sen!2sus",
 
   googleMapsDirections:
-    "https://www.google.com/maps/dir//River+Crossing+Family+Dental+%26+Orthodontics+4121+13400+S+Unit+A,+Riverton,+UT+84096",
+    "https://www.google.com/maps/dir//River+Crossing+Family+Dental+%26+Orthodontics+4121+W+13400+S+Unit+A,+Riverton,+UT+84096",
 } as const;
 
 export type NavItem = {
