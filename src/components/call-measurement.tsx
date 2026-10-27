@@ -1,19 +1,30 @@
 "use client";
 
 import Script from "next/script";
-import { createContext, useContext, useRef, useState, useSyncExternalStore } from "react";
+import { createContext, useContext, useEffect, useState, useSyncExternalStore } from "react";
 import type { ComponentProps, ReactNode } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { normalizeForwardingNumber } from "@/lib/call-measurement";
+import {
+  BOOKING_CONVERSION_SEND_TO,
+  CALL_CONVERSION_SEND_TO,
+  CONSENT_ALLOWED,
+  CONSENT_DENIED,
+  GOOGLE_ADS_TAG_ID,
+  isGoogleAdsHost,
+  isOnlineBookingHref,
+  urlWithoutQueryOrHash,
+} from "@/lib/google-ads";
 
-const TAG_ID = "AW-11116960223";
-const CALL_ACTION = `${TAG_ID}/e-qaCI-1hPscEN-z_bQp`;
 const CHOICE_KEY = "rcd-ad-measurement-v1";
 const CHOICE_EVENT = "rcd-ad-measurement-change";
+const CONVERSION_NAV_TIMEOUT_MS = 1000;
 type Choice = "allowed" | "declined" | null;
 type Phone = { display: string; tel: string };
 const PhoneContext = createContext<Phone>(siteConfig.phone);
 let sessionChoice: Choice = null;
+let measurementConsentGranted = false;
+let tagConfigured = false;
 
 declare global {
   interface Window {
@@ -50,6 +61,86 @@ function choose(value: Exclude<Choice, null>) {
   window.dispatchEvent(new Event(CHOICE_EVENT));
 }
 
+function ensureGtagStub() {
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function (...args: unknown[]) {
+    window.dataLayer!.push(args);
+  };
+}
+
+function grantMeasurementConsent() {
+  if (measurementConsentGranted || readChoice() !== "allowed") return;
+  measurementConsentGranted = true;
+  ensureGtagStub();
+  window.gtag!("consent", "update", { ...CONSENT_ALLOWED });
+  window.gtag!("set", "allow_ad_personalization_signals", false);
+  window.gtag!("set", "allow_google_signals", false);
+  // Queued before gtag.js runs so the tag's own page view cannot carry a query string.
+  window.gtag!("set", "page_location", urlWithoutQueryOrHash(window.location.href));
+  const referrer = referrerWithoutQuery();
+  if (referrer) window.gtag!("set", "page_referrer", referrer);
+}
+
+function pageLocationWithoutQuery(): string {
+  return urlWithoutQueryOrHash(window.location.href);
+}
+
+function referrerWithoutQuery(): string | undefined {
+  if (!document.referrer) return undefined;
+  try {
+    return urlWithoutQueryOrHash(document.referrer);
+  } catch {
+    return undefined;
+  }
+}
+
+function measurementAllowedHere(): boolean {
+  return readChoice() === "allowed" && isGoogleAdsHost(window.location.hostname);
+}
+
+function sendBookingConversion(onSent?: () => void) {
+  if (!measurementAllowedHere()) {
+    onSent?.();
+    return;
+  }
+  grantMeasurementConsent();
+  if (!window.gtag) {
+    onSent?.();
+    return;
+  }
+  const payload: Record<string, unknown> = {
+    send_to: BOOKING_CONVERSION_SEND_TO,
+    page_location: pageLocationWithoutQuery(),
+  };
+  const referrer = referrerWithoutQuery();
+  if (referrer) payload.page_referrer = referrer;
+
+  // A new tab leaves this page in place, so a beacon can finish without
+  // delaying navigation. A same-tab booking waits for the hit, then goes.
+  if (!onSent) {
+    payload.transport_type = "beacon";
+    window.gtag("event", "conversion", payload);
+    return;
+  }
+
+  let finished = false;
+  const done = () => {
+    if (finished) return;
+    finished = true;
+    onSent();
+  };
+  payload.event_callback = done;
+  window.gtag("event", "conversion", payload);
+  window.setTimeout(done, CONVERSION_NAV_TIMEOUT_MS);
+}
+
+function bookingAnchor(target: EventTarget | null): HTMLAnchorElement | null {
+  if (!(target instanceof Element)) return null;
+  const anchor = target.closest("a");
+  if (!anchor || !isOnlineBookingHref(anchor.href)) return null;
+  return anchor;
+}
+
 export function PhoneLink({ children, ...props }: Omit<ComponentProps<"a">, "href">) {
   const phone = useContext(PhoneContext);
   return <a {...props} href={`tel:${phone.tel}`}>{children}</a>;
@@ -63,27 +154,62 @@ export function CallMeasurement({ children }: { children: ReactNode }) {
   const choice = useSyncExternalStore<Choice | "pending">(subscribe, readChoice, () => "pending");
   const [phone, setPhone] = useState<Phone>(siteConfig.phone);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
-  const initialized = useRef(false);
+  const measurementHost = useSyncExternalStore(
+    subscribe,
+    () => isGoogleAdsHost(window.location.hostname),
+    () => false,
+  );
 
-  // Never send preview/development traffic to the practice's advertising account.
-  const productionHost = useSyncExternalStore(subscribe, () =>
-    ["rivercrossingdental.com", "www.rivercrossingdental.com"].includes(window.location.hostname),
-  () => false);
+  // Queue the consent update before React commits the gtag.js tag below.
+  // An effect would run too late: the script can execute before it.
+  if (typeof window !== "undefined" && choice === "allowed" && measurementHost) {
+    grantMeasurementConsent();
+  }
+
+  useEffect(() => {
+    function onClick(event: MouseEvent) {
+      if (event.type === "auxclick") {
+        if (event.button !== 1) return;
+      } else if (event.button !== 0) {
+        return;
+      }
+      const anchor = bookingAnchor(event.target);
+      if (!anchor) return;
+      const opensSeparately =
+        anchor.target === "_blank" ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.button === 1;
+      if (opensSeparately) {
+        sendBookingConversion();
+        return;
+      }
+      if (!measurementAllowedHere()) return;
+      event.preventDefault();
+      sendBookingConversion(() => {
+        window.location.assign(anchor.href);
+      });
+    }
+    document.addEventListener("click", onClick, true);
+    document.addEventListener("auxclick", onClick, true);
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      document.removeEventListener("auxclick", onClick, true);
+    };
+  }, []);
 
   function initializeTag() {
-    if (initialized.current || readChoice() !== "allowed") return;
-    initialized.current = true;
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function (...args: unknown[]) { window.dataLayer!.push(args); };
-    window.gtag("consent", "default", {
-      ad_storage: "granted", ad_user_data: "granted",
-      ad_personalization: "denied", analytics_storage: "denied",
+    if (tagConfigured || readChoice() !== "allowed") return;
+    tagConfigured = true;
+    ensureGtagStub();
+    grantMeasurementConsent();
+    window.gtag!("js", new Date());
+    window.gtag!("config", GOOGLE_ADS_TAG_ID, {
+      allow_enhanced_conversions: false,
+      page_location: pageLocationWithoutQuery(),
     });
-    window.gtag("set", "allow_ad_personalization_signals", false);
-    window.gtag("set", "allow_google_signals", false);
-    window.gtag("js", new Date());
-    window.gtag("config", TAG_ID, { allow_enhanced_conversions: false });
-    window.gtag("config", CALL_ACTION, {
+    window.gtag!("config", CALL_CONVERSION_SEND_TO, {
       phone_conversion_number: siteConfig.phone.display,
       phone_conversion_callback: (display: string, number: string) => {
         if (readChoice() !== "allowed") return;
@@ -98,11 +224,11 @@ export function CallMeasurement({ children }: { children: ReactNode }) {
     setPreferencesOpen(false);
     if (value === "declined") {
       setPhone(siteConfig.phone);
-      if (initialized.current) {
-        window.gtag?.("consent", "update", {
-          ad_storage: "denied", ad_user_data: "denied",
-          ad_personalization: "denied", analytics_storage: "denied",
-        });
+      const tagStarted = measurementConsentGranted || tagConfigured;
+      measurementConsentGranted = false;
+      if (tagStarted) {
+        ensureGtagStub();
+        window.gtag!("consent", "update", { ...CONSENT_DENIED });
         // Unload the already-loaded tag; subsequent visits keep it unloaded.
         window.location.reload();
       }
@@ -112,8 +238,8 @@ export function CallMeasurement({ children }: { children: ReactNode }) {
   return (
     <PhoneContext.Provider value={choice === "allowed" ? phone : siteConfig.phone}>
       {children}
-      {choice === "allowed" && productionHost && (
-        <Script id="rcd-google-ads" src={`https://www.googletagmanager.com/gtag/js?id=${TAG_ID}`}
+      {choice === "allowed" && measurementHost && (
+        <Script id="rcd-google-ads" src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_TAG_ID}`}
           strategy="afterInteractive" onReady={initializeTag} />
       )}
       <div className="bg-brand-navy px-4 pb-4 text-center">

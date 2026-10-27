@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { siteConfig } from "@/lib/site-config";
 import { CallMeasurement } from "@/components/call-measurement";
+import { consentDefaultInlineScript } from "@/lib/google-ads";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -87,6 +89,9 @@ export default function RootLayout({
             __html: JSON.stringify(localBusinessJsonLd).replace(/</g, "\\u003c"),
           }}
         />
+        <Script id="rcd-google-consent" strategy="beforeInteractive">
+          {consentDefaultInlineScript()}
+        </Script>
         <CallMeasurement>
           <SiteHeader />
           <main className="flex-1">{children}</main>
