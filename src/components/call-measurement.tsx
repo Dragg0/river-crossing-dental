@@ -75,6 +75,10 @@ function grantMeasurementConsent() {
   window.gtag!("consent", "update", { ...CONSENT_ALLOWED });
   window.gtag!("set", "allow_ad_personalization_signals", false);
   window.gtag!("set", "allow_google_signals", false);
+  // Queued before gtag.js runs so the tag's own page view cannot carry a query string.
+  window.gtag!("set", "page_location", urlWithoutQueryOrHash(window.location.href));
+  const referrer = referrerWithoutQuery();
+  if (referrer) window.gtag!("set", "page_referrer", referrer);
 }
 
 function pageLocationWithoutQuery(): string {
@@ -201,7 +205,10 @@ export function CallMeasurement({ children }: { children: ReactNode }) {
     ensureGtagStub();
     grantMeasurementConsent();
     window.gtag!("js", new Date());
-    window.gtag!("config", GOOGLE_ADS_TAG_ID, { allow_enhanced_conversions: false });
+    window.gtag!("config", GOOGLE_ADS_TAG_ID, {
+      allow_enhanced_conversions: false,
+      page_location: pageLocationWithoutQuery(),
+    });
     window.gtag!("config", CALL_CONVERSION_SEND_TO, {
       phone_conversion_number: siteConfig.phone.display,
       phone_conversion_callback: (display: string, number: string) => {
