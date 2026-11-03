@@ -16,6 +16,8 @@ const eslintConfig = defineConfig([
     "_archive/**",
     "reference/**",
     "node_modules/**",
+    // Vendored PDF.js runtime files (see scripts/copy-pdfjs-assets.mjs).
+    "public/pdfjs/**",
   ]),
 ]);
 
