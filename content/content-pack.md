@@ -2,7 +2,7 @@
 
 Source: live rivercrossingdental.com (extracted June 2026). Injected gambling spam stripped out. This is clean copy ready to map onto your Vercel routes.
 
-> **Phone (resolved):** Use **801-254-8812**. The live site's main display number and the Yelp listing (updated Dec 2025) both use 801-254-8812. The 801-509-9937 that appears on some buttons and on the current Vercel draft is a secondary/old number — replace it with 801-254-8812 site-wide for consistency (this also helps GBP/local-search NAP consistency).
+> **Phone (resolved):** Use **801-254-8812**. The live site's main display number and the Yelp listing (updated Dec 2025) both use 801-254-8812. Use this number site-wide for consistency (this also helps GBP/local-search NAP consistency).
 >
 > **Hours (confirmed by Dr. Peterson):** Mon 8:00–5:00 · Tue 8:00–4:00 · Wed 8:00–5:00 · Thu 8:00–4:00 · **Fri/Sat/Sun Closed**.
 
