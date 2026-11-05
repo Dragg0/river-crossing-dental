@@ -33,10 +33,31 @@ export const siteConfig = {
   googleReviewUrl:
     "https://search.google.com/local/writereview?placeid=ChIJm1--i7KFUocRrcXAIeit9EE",
 
+  // Monday and Wednesday close for lunch, noon–1. `periods` is the
+  // schedule JSON-LD publishes. `open` / `close` are the first open and
+  // last close so closed-day checks (`open` is null) stay unchanged.
   hours: [
-    { day: "Monday", open: "8:00", close: "17:00", display: "8:00 AM – 5:00 PM" },
+    {
+      day: "Monday",
+      open: "8:00",
+      close: "17:00",
+      display: "8:00 AM – 12:00 PM\n1:00 PM – 5:00 PM",
+      periods: [
+        { open: "8:00", close: "12:00" },
+        { open: "13:00", close: "17:00" },
+      ],
+    },
     { day: "Tuesday", open: "8:00", close: "16:00", display: "8:00 AM – 4:00 PM" },
-    { day: "Wednesday", open: "8:00", close: "17:00", display: "8:00 AM – 5:00 PM" },
+    {
+      day: "Wednesday",
+      open: "8:00",
+      close: "17:00",
+      display: "8:00 AM – 12:00 PM\n1:00 PM – 5:00 PM",
+      periods: [
+        { open: "8:00", close: "12:00" },
+        { open: "13:00", close: "17:00" },
+      ],
+    },
     { day: "Thursday", open: "8:00", close: "16:00", display: "8:00 AM – 4:00 PM" },
     { day: "Friday", open: null, close: null, display: "Closed" },
     { day: "Saturday", open: null, close: null, display: "Closed" },

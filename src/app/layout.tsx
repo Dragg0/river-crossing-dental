@@ -57,14 +57,21 @@ const localBusinessJsonLd = {
     latitude: siteConfig.geo.latitude,
     longitude: siteConfig.geo.longitude,
   },
-  openingHoursSpecification: siteConfig.hours
-    .filter((h) => h.open && h.close)
-    .map((h) => ({
-      "@type": "OpeningHoursSpecification",
+  openingHoursSpecification: siteConfig.hours.flatMap((h) => {
+    const periods =
+      "periods" in h
+        ? h.periods
+        : h.open && h.close
+          ? [{ open: h.open, close: h.close }]
+          : [];
+
+    return periods.map((period) => ({
+      "@type": "OpeningHoursSpecification" as const,
       dayOfWeek: h.day,
-      opens: h.open,
-      closes: h.close,
-    })),
+      opens: period.open,
+      closes: period.close,
+    }));
+  }),
   sameAs: [
     siteConfig.social.facebook,
     siteConfig.social.instagram,
