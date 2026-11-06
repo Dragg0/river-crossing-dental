@@ -22,8 +22,14 @@ import { CtaBand } from "@/components/cta-band";
 import { MeetEve } from "@/components/meet-eve";
 
 function compactHour(display: string) {
-  const match = /^(\d+):00 AM – (\d+):00 PM$/.exec(display);
-  return match ? `${match[1]}–${match[2]}` : display;
+  return display
+    .split(/[,\n]/)
+    .map((part) => {
+      const match = /^(\d+):00 (?:AM|PM) – (\d+):00 (?:AM|PM)$/.exec(part.trim());
+      return match ? `${match[1]}–${match[2]}` : part.trim();
+    })
+    .filter(Boolean)
+    .join(", ");
 }
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {

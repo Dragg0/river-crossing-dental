@@ -91,9 +91,11 @@ export function SiteFooter() {
             <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Hours</h3>
             <ul className="space-y-1.5 text-sm">
               {siteConfig.hours.map((row) => (
-                <li key={row.day} className="flex justify-between gap-3">
-                  <span className="text-slate-300">{row.day}</span>
-                  <span className={row.open ? "text-slate-100" : "text-slate-400"}>
+                <li key={row.day} className="flex flex-wrap items-start justify-between gap-x-3">
+                  <span className="shrink-0 text-slate-300">{row.day}</span>
+                  <span
+                    className={`ml-auto w-max max-w-full whitespace-pre-line text-right ${row.open ? "text-slate-100" : "text-slate-400"}`}
+                  >
                     {row.display}
                   </span>
                 </li>
