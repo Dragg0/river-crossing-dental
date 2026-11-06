@@ -2,6 +2,7 @@ import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { locations } from "@/content/locations";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
@@ -112,6 +113,19 @@ export function SiteFooter() {
               <li><Link href="/reviews" className="text-slate-300 hover:text-white">Reviews</Link></li>
               <li><Link href="/blog" className="text-slate-300 hover:text-white">Blog</Link></li>
               <li><Link href="/contact" className="text-slate-300 hover:text-white">Contact</Link></li>
+            </ul>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-4 mt-8">Locations</h3>
+            <ul className="space-y-2 text-sm">
+              {locations.map((location) => (
+                <li key={location.slug}>
+                  <Link
+                    href={`/locations/${location.slug}`}
+                    className="text-slate-300 hover:text-white"
+                  >
+                    {location.town}
+                  </Link>
+                </li>
+              ))}
             </ul>
             <a
               href={siteConfig.booking}
