@@ -6,6 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      // Office tools (the PDF signer) aren't for search engines.
+      disallow: "/tools/",
     },
     sitemap: `${siteConfig.url}/sitemap.xml`,
     host: siteConfig.url,
