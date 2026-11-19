@@ -6,12 +6,14 @@ type Props = {
   heading?: string;
   body?: string;
   variant?: "default" | "coral";
+  bookLabel?: string;
 };
 
 export function CtaBand({
   heading = "Ready to schedule your visit?",
   body = "Booking online takes a minute. Or call our friendly front office.",
   variant = "default",
+  bookLabel = "Book Appointment",
 }: Props) {
   const isColor = variant === "coral";
   return (
@@ -33,7 +35,7 @@ export function CtaBand({
                   : "inline-flex h-12 items-center justify-center rounded-full bg-brand-coral px-8 text-sm font-bold text-white shadow-md transition-colors hover:bg-brand-coral-dark"
               }
             >
-              Book Appointment
+              {bookLabel}
             </a>
             <PhoneLink
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-white/40 px-6 text-sm font-semibold text-white hover:bg-white/10"

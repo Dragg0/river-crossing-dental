@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 import { services } from "@/content/services";
 import { offers } from "@/content/offers";
 import { posts } from "@/content/blog";
+import { locations } from "@/content/locations";
 
 const BASE = siteConfig.url;
 
@@ -42,6 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const locationPages: MetadataRoute.Sitemap = locations.map((location) => ({
+    url: `${BASE}/locations/${location.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   const blogPages: MetadataRoute.Sitemap = posts.map((p) => ({
     url: `${BASE}/blog/${p.slug}`,
     lastModified: new Date(p.publishedAt),
@@ -54,6 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...servicePages,
     ...subServicePages,
     ...specialsPages,
+    ...locationPages,
     ...blogPages,
   ];
 }

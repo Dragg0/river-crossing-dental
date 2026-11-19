@@ -2,6 +2,7 @@ import { PhoneLink, PhoneNumber } from "@/components/call-measurement";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { locations } from "@/content/locations";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
@@ -91,9 +92,11 @@ export function SiteFooter() {
             <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Hours</h3>
             <ul className="space-y-1.5 text-sm">
               {siteConfig.hours.map((row) => (
-                <li key={row.day} className="flex justify-between gap-3">
-                  <span className="text-slate-300">{row.day}</span>
-                  <span className={row.open ? "text-slate-100" : "text-slate-400"}>
+                <li key={row.day} className="flex flex-wrap items-start justify-between gap-x-3">
+                  <span className="shrink-0 text-slate-300">{row.day}</span>
+                  <span
+                    className={`ml-auto w-max max-w-full whitespace-pre-line text-right ${row.open ? "text-slate-100" : "text-slate-400"}`}
+                  >
                     {row.display}
                   </span>
                 </li>
@@ -110,6 +113,19 @@ export function SiteFooter() {
               <li><Link href="/reviews" className="text-slate-300 hover:text-white">Reviews</Link></li>
               <li><Link href="/blog" className="text-slate-300 hover:text-white">Blog</Link></li>
               <li><Link href="/contact" className="text-slate-300 hover:text-white">Contact</Link></li>
+            </ul>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-4 mt-8">Locations</h3>
+            <ul className="space-y-2 text-sm">
+              {locations.map((location) => (
+                <li key={location.slug}>
+                  <Link
+                    href={`/locations/${location.slug}`}
+                    className="text-slate-300 hover:text-white"
+                  >
+                    {location.town}
+                  </Link>
+                </li>
+              ))}
             </ul>
             <a
               href={siteConfig.booking}

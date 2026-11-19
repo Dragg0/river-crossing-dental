@@ -98,10 +98,12 @@ export default function ContactPage() {
                 {siteConfig.hours.map((row) => (
                   <li
                     key={row.day}
-                    className="flex items-center justify-between py-3 first:pt-0 last:pb-0"
+                    className="flex flex-wrap items-start justify-between gap-x-4 py-3 first:pt-0 last:pb-0"
                   >
-                    <span className="font-semibold text-brand-navy">{row.day}</span>
-                    <span className={row.open ? "text-slate-700" : "text-slate-400"}>
+                    <span className="shrink-0 font-semibold text-brand-navy">{row.day}</span>
+                    <span
+                      className={`ml-auto w-max max-w-full whitespace-pre-line text-right ${row.open ? "text-slate-700" : "text-slate-400"}`}
+                    >
                       {row.display}
                     </span>
                   </li>
